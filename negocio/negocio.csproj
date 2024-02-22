@@ -41,7 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticuloNegocio.cs" />
+    <Compile Include="ElementoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\accesodatos\accesodatos.csproj">
+      <Project>{b864242b-f587-4b7b-ad8a-e98cc9fc4f33}</Project>
+      <Name>accesodatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{8501ef7b-2759-4a5a-be1c-307985049f91}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
