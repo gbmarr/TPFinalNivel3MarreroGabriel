@@ -19,7 +19,9 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.Id AND A.IdCategoria = C.Id");
+                // tengo que recordar que en esta consulta no traigo IdMarca ni IdCategoria, IMPORTANTE cuando trabaje con desplegables! (Unidad 8, video 1 - Nivel 2)
+                // ademas, si utilizamos la eliminacion logica, al final de la consulta, debemos agregar un AND adicional que filtre los registros con determinado estado
+                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, IdMarca, M.Descripcion Marca, IdCategoria, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.Id AND A.IdCategoria = C.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -30,8 +32,10 @@ namespace negocio
                     auxiliar.Nombre = (string)datos.Lector["Nombre"];
                     auxiliar.Descripcion = (string)datos.Lector["Descripcion"];
                     auxiliar.Marca = new Elemento();
+                    auxiliar.Marca.ID = (int)datos.Lector["IdMarca"];
                     auxiliar.Marca.Descripcion = (string)datos.Lector["Marca"];
                     auxiliar.Categoria = new Elemento();
+                    auxiliar.Categoria.ID = (int)datos.Lector["IdCategoria"];
                     auxiliar.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     auxiliar.Imagen = (string)datos.Lector["ImagenUrl"];
                     auxiliar.Precio = (Decimal)datos.Lector["Precio"];
@@ -56,9 +60,177 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values ('', '', '', 1, 1, '', 2)");
+                // consulta + seteo de los parametros dentro de la consulta
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values (@codigo, @nombre, @descripcion, @idMarca, @idCat, @imagen, @precio)");
+                datos.setearParametro("@codigo", nuevo.codArticulo);
+                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearParametro("@descripcion", nuevo.Descripcion);
+                datos.setearParametro("@idMarca", nuevo.Marca.ID);
+                datos.setearParametro("@idCat", nuevo.Categoria.ID);
+                datos.setearParametro("@imagen", nuevo.Imagen);
+                datos.setearParametro("@precio", nuevo.Precio);
                 datos.ejecutarAccion();
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        // metodo que nos permite modificar un articulo de nuestra base de datos
+        public void modificarArticulo(Articulo modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @desc, IdMarca = @idMarca, IdCategoria = @idCat, ImagenUrl = @imagen, Precio = @precio where Id = @id");
+                datos.setearParametro("@codigo", modificar.codArticulo);
+                datos.setearParametro("@nombre", modificar.Nombre);
+                datos.setearParametro("@desc", modificar.Descripcion);
+                datos.setearParametro("@idMarca", modificar.Marca.ID);
+                datos.setearParametro("@idCat", modificar.Categoria.ID);
+                datos.setearParametro("@imagen", modificar.Imagen);
+                datos.setearParametro("@precio", modificar.Precio);
+                datos.setearParametro("@id", modificar.ID);
+                
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        // metodo para realizar filtrado de lista contra DB. Hay que modificarlo en base a la busqueda que quiera realizar
+        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> listafiltrada = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, IdMarca, M.Descripcion Marca, IdCategoria, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.Id AND A.IdCategoria = C.Id AND ";
+
+                switch (campo)
+                {
+                    case "Codigo":
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "Codigo > " + filtro;
+                                break;       
+                            case "Menor a":  
+                                consulta += "Codigo < " + filtro;
+                                break;
+                            case "Igual a":
+                                consulta += "Codigo = " + filtro;
+                                break;
+                        }
+                        break;
+                    case "Nombre":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "Nombre like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "Nombre like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "Nombre like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    case "Descripción":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "A.Descripcion like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "A.Descripcion like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "A.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                }
+
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo auxiliar = new Articulo();
+                    auxiliar.ID = (int)datos.Lector["Id"];
+                    auxiliar.codArticulo = (string)datos.Lector["Codigo"];
+                    auxiliar.Nombre = (string)datos.Lector["Nombre"];
+                    auxiliar.Descripcion = (string)datos.Lector["Descripcion"];
+                    auxiliar.Marca = new Elemento();
+                    auxiliar.Marca.ID = (int)datos.Lector["IdMarca"];
+                    auxiliar.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    auxiliar.Categoria = new Elemento();
+                    auxiliar.Categoria.ID = (int)datos.Lector["IdCategoria"];
+                    auxiliar.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    auxiliar.Imagen = (string)datos.Lector["ImagenUrl"];
+                    auxiliar.Precio = (Decimal)datos.Lector["Precio"];
+
+                    listafiltrada.Add(auxiliar);
+                }
+
+                return listafiltrada;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        // metodo que vamos a utilizar para eliminar de manera fisica los registros de nuestra base de datos.
+        public void eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Delete from ARTICULOS where Id = @id");
+                datos.setearParametro("@id", id);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        // metodo de eliminacion logica de registros de la base de datos utilizando un "estado"
+        public void eliminarLogico(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // este metodo se debe configurar ya que fue creado teniendo como parametro que la tabla a utilizar
+                // tiene registros con una columna estado que puede ser activo = 0 o activo = 1. Nuestra tabla de Articulos no tiene dicha columna
+                datos.setearConsulta("Update NOMBREDELATABLA set Activo = 0 where Id = @id");
+                datos.setearParametro("@id", id);
+                
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

@@ -63,6 +63,14 @@ namespace accesodatos
             }
         }
 
+        // metodo que nos va a permitir validar esas "variables" que creamos dentro de una consulta embebida a traves de @parametro
+        // cuando llamemos este metodo lo que va a suceder es que la "variable" que hemos pasado como parametro en la consulta va a
+        // ser reemplazada por el valor que le asignemos al llamar al metodo.
+        public void setearParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
+
         // si el lector no es nulo, lo cerramos y luego tambien cerramos la conexion
         public void cerrarConexion()
         {
