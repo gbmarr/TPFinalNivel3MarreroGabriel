@@ -15,3 +15,10 @@ Pasos seguidos para crear la aplicacion.
 11. En ArticuloNegocio se creo el metodo para modificar un Articulo de la base de datos utilizando el seteo de los parametros dentro de la consulta.
 12. Se creo el metodo "eliminar" en la clase ArticuloNegocio, el cual elimina de manera fisica los registros dentro de nuestra base de datos.
 	Ademas, tambien se creo la eliminacion logica, con lo cual podemos, en otras palabras, activar o desactivar registros de nuestra DB sin eliminarlos fisicamente.
+13. Se agregó el metodo listarConSP para realizar la misma funcionalidad que el metodo listar de la clase ArticuloNegocio pero que trabaja con
+	procedimientos almacenados y no con consultas embebidas.
+14. Se agregó el metodo agregarConSP para agregar registros utilizando un procedimiento almacenado.
+15. Se modifico el metodo listar inicial agregandole un parametro para trabajar la modificacion del mismo. Si el parametro sigue vacio cuando se ejecuta el metodo
+	entonces la consulta no se va a ver afectada y va a seguir teniendo la misma funcionalidad que antes.
+16. Se agregó el metodo de setearProcedimiento a la clase AccesoDatos.
+17. Se creó el metodo modificarConSP para utilizar la misma logica que el metodo modificar pero usando un procedimiento almacenado dentro del mismo.

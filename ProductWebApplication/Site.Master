@@ -11,8 +11,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <nav>
+
+            </nav>
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
+            <footer>
+
+            </footer>
         </div>
     </form>
 </body>

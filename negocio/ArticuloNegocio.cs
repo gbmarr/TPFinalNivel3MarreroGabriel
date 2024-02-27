@@ -11,7 +11,7 @@ namespace negocio
     class ArticuloNegocio
     {
         // metodo que vamos a utilizar para obtener la lista de articulos
-        public List<Articulo> listar()
+        public List<Articulo> listar(string id = "")
         {
             List<Articulo> lista = new List<Articulo>();
             // creamos un objeto que tiene conexion (tiene la cadena de conexion configurada), un comando (tiene instancia) y un lector
@@ -21,9 +21,16 @@ namespace negocio
             {
                 // tengo que recordar que en esta consulta no traigo IdMarca ni IdCategoria, IMPORTANTE cuando trabaje con desplegables! (Unidad 8, video 1 - Nivel 2)
                 // ademas, si utilizamos la eliminacion logica, al final de la consulta, debemos agregar un AND adicional que filtre los registros con determinado estado
-                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, IdMarca, M.Descripcion Marca, IdCategoria, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.Id AND A.IdCategoria = C.Id");
+                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, IdMarca, M.Descripcion Marca, IdCategoria, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.Id AND A.IdCategoria = C.Id";
+
+                // en caso de que el parametro id venga cargado, se modificara la consulta para obtener solo el registro que coincida
+                if (id != "")
+                    consulta += " AND A.Id = " + id; 
+
+                datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
 
+                // si existen datos dentro del lector, se ejecutará el codigo dentro del while
                 while (datos.Lector.Read())
                 {
                     Articulo auxiliar = new Articulo();
@@ -54,6 +61,49 @@ namespace negocio
             }
         }
 
+        // metodo de listado con stored procedure
+        public List<Articulo> listarConSP()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                // reemplazamos el uso de consultas embebidas por el uso de procedimientos almacenados. NO HACERLO SIEMPRE.
+                datos.setearProcedimiento("spListar");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo auxiliar = new Articulo();
+                    auxiliar.ID = (int)datos.Lector["Id"];
+                    auxiliar.codArticulo = (string)datos.Lector["Codigo"];
+                    auxiliar.Nombre = (string)datos.Lector["Nombre"];
+                    auxiliar.Descripcion = (string)datos.Lector["Descripcion"];
+                    auxiliar.Marca = new Elemento();
+                    auxiliar.Marca.ID = (int)datos.Lector["IdMarca"];
+                    auxiliar.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    auxiliar.Categoria = new Elemento();
+                    auxiliar.Categoria.ID = (int)datos.Lector["IdCategoria"];
+                    auxiliar.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    auxiliar.Imagen = (string)datos.Lector["ImagenUrl"];
+                    auxiliar.Precio = (Decimal)datos.Lector["Precio"];
+
+                    lista.Add(auxiliar);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        // metodo que nos va a permitir insertar nuevos registros en la DB a traves de una consulta embebida
         public void agregarArticulo(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -62,6 +112,34 @@ namespace negocio
             {
                 // consulta + seteo de los parametros dentro de la consulta
                 datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values (@codigo, @nombre, @descripcion, @idMarca, @idCat, @imagen, @precio)");
+                datos.setearParametro("@codigo", nuevo.codArticulo);
+                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearParametro("@descripcion", nuevo.Descripcion);
+                datos.setearParametro("@idMarca", nuevo.Marca.ID);
+                datos.setearParametro("@idCat", nuevo.Categoria.ID);
+                datos.setearParametro("@imagen", nuevo.Imagen);
+                datos.setearParametro("@precio", nuevo.Precio);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        // metodo para inertar nuevos registros utilizando procedimiento almacenado
+        public void agregarArticuloConSP(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("agregarConSP");
                 datos.setearParametro("@codigo", nuevo.codArticulo);
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@descripcion", nuevo.Descripcion);
@@ -99,6 +177,35 @@ namespace negocio
                 datos.setearParametro("@precio", modificar.Precio);
                 datos.setearParametro("@id", modificar.ID);
                 
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        // metodo que nos permitira realizar modificaciones como el anterior pero usando procedimiento almacenado
+        public void modificarArticuloConSP(Articulo modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("spModificar");
+                datos.setearParametro("@codigo", modificar.codArticulo);
+                datos.setearParametro("@nombre", modificar.Nombre);
+                datos.setearParametro("@desc", modificar.Descripcion);
+                datos.setearParametro("@idMarca", modificar.Marca.ID);
+                datos.setearParametro("@idCat", modificar.Categoria.ID);
+                datos.setearParametro("@imagen", modificar.Imagen);
+                datos.setearParametro("@precio", modificar.Precio);
+                datos.setearParametro("@id", modificar.ID);
+
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

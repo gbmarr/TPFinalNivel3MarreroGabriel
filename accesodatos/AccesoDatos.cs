@@ -33,6 +33,13 @@ namespace accesodatos
             comando.CommandText = consulta;
         }
 
+        // se setea el tipo de accion a traves de la utilizacion de un procedimiento almacenado ya creado en nuestra base de datos.
+        public void setearProcedimiento(string sp)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = sp;
+        }
+
         // este metodo realiza la lectura y lo guarda en el lector
         public void ejecutarLectura()
         {
