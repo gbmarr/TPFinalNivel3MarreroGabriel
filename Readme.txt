@@ -22,3 +22,9 @@ Pasos seguidos para crear la aplicacion.
 	entonces la consulta no se va a ver afectada y va a seguir teniendo la misma funcionalidad que antes.
 16. Se agregó el metodo de setearProcedimiento a la clase AccesoDatos.
 17. Se creó el metodo modificarConSP para utilizar la misma logica que el metodo modificar pero usando un procedimiento almacenado dentro del mismo.
+18. Se crearon todas las pantallas. IMPORTANTE TENER EN CUENTA QUE LAS PANTALLAS LOGIN/REGISTRO SE TRATARÁ DE QUE SEAN LA MISMA CON SUS CONFIGURACIONES NECESARIAS.
+	ADEMAS, LA PANTALLA PERFIL TAMBIEN COMPRENDERA A LOS FAVORITOS (O SE PUEDE CREAR UNA PANTALLA ADICIONAL)
+	EN LA PANTALLA FORMULARIOARTICULO SE REALIZARAN TODAS LAS MODICACIONES, ELIMINACIONES, AGREGACIONES DE REGISTROS, ETC.
+	SE SEPARO LA PANTALLA DE DETALLE PARA DARLE OTRA ESTRUCTURA.
+	EN LA PAGINA DEFAULT ESTARAN LOS ARTICULOS EN FORMATO TARJETA
+19. Se comenzó a crear la barra de navegacion y a diagramar como se va a estructurar toda la aplicacion

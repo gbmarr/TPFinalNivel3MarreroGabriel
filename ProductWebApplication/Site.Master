@@ -4,16 +4,28 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <link href="Styles/styles.css" rel="stylesheet" />
+    <script src="Scripts/scripts.js"></script>
+    <title>Catálogo de productos</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <nav>
-
-            </nav>
+            <div class="navbar">
+                <div class="navbar_title">
+                    <a href="~/Default.aspx"><h2>ProductApp</h2></a>
+                </div>
+                <div class="navbar_items">
+                    <ul>
+                        <li><a href="~/Default.aspx">Inicio</a></li>
+                        <li><a href="~/ListadoArticulos.aspx">Listado de Articulos</a></li>
+                        <li><a href="~/Favoritos.aspx">Favoritos</a></li>
+                        <li><a href="~/Perfil.aspx">Perfil</a></li>
+                    </ul>
+                </div>
+            </div>
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
             <footer>
