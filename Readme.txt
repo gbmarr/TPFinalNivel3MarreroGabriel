@@ -27,4 +27,5 @@ Pasos seguidos para crear la aplicacion.
 	EN LA PANTALLA FORMULARIOARTICULO SE REALIZARAN TODAS LAS MODICACIONES, ELIMINACIONES, AGREGACIONES DE REGISTROS, ETC.
 	SE SEPARO LA PANTALLA DE DETALLE PARA DARLE OTRA ESTRUCTURA.
 	EN LA PAGINA DEFAULT ESTARAN LOS ARTICULOS EN FORMATO TARJETA
-19. Se comenzó a crear la barra de navegacion y a diagramar como se va a estructurar toda la aplicacion
+19. Se comenzó a crear la barra de navegacion y a diagramar como se va a estructurar toda la aplicacion.
+20. Se le dio todo el estilo de la barra de navegacion. Se creo la estructura de las tarjetas de la pagina de default.

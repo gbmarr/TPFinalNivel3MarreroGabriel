@@ -1,11 +1,13 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ProductWebApplication.Site" %>
 
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="Styles/styles.css" rel="stylesheet" />
-    <script src="Scripts/scripts.js"></script>
     <title>Catálogo de productos</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -14,24 +16,26 @@
     <form id="form1" runat="server">
         <div>
             <div class="navbar">
-                <div class="navbar_title">
-                    <a href="~/Default.aspx"><h2>ProductApp</h2></a>
-                </div>
-                <div class="navbar_items">
-                    <ul>
-                        <li><a href="~/Default.aspx">Inicio</a></li>
-                        <li><a href="~/ListadoArticulos.aspx">Listado de Articulos</a></li>
-                        <li><a href="~/Favoritos.aspx">Favoritos</a></li>
-                        <li><a href="~/Perfil.aspx">Perfil</a></li>
+                    <h1 class="navbar_title">ProductApp</h1>
+                <div>
+                    <ul class="navbar_items">
+                        <li><a href="Default.aspx">Inicio</a></li>
+                        <li><a href="ListadoArticulos.aspx">Listado de Articulos</a></li>
+                        <li><a href="Favoritos.aspx">Favoritos</a></li>
+                        <li><a href="Perfil.aspx">Perfil</a></li>
                     </ul>
+                </div>
+                <div class="navbar_login">
+                    <a href="Login.aspx" class="btn_login">Login</a>
+                    <a href="Login.aspx" class="btn_registro">Registrarse</a>
                 </div>
             </div>
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
-            <footer>
-
+            <footer class="footer">
             </footer>
         </div>
     </form>
+    <script src="Scripts/scripts.js"></script>
 </body>
 </html>

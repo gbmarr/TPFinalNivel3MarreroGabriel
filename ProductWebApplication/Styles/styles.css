@@ -1,2 +1,123 @@
-﻿body {
+﻿/* fonts:
+      font-family: "Bebas Neue", sans-serif;
+      font-family: "Teko", sans-serif;
+*/
+
+/* paleta de colores */
+:root {
+    --white: #fdffffff;
+    --eerie-black: #1f1d1dff;
+    --mint: #02c39aff;
+    --caribbean-current: #246a73ff;
+    --folly: #ff3366ff;
+}
+
+/* ESTILOS GENERALES DE LA APP */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: fit-content;
+    background-color: var(--eerie-black);
+    font: 20px "Teko", sans-serif;
+    color: var(--white);
+    text-decoration: none;
+    list-style: none;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+.main_container {
+    padding: 2em;
+}
+
+/* BARRA DE NAVEGACION */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-direction: row;
+    background-color: var(--eerie-black);
+}
+
+.navbar_title {
+    color: var(--folly);
+    margin: .5em;
+    font: 3em "Bebas Neue", sans-serif;
+}
+
+.navbar_items {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar_items a {
+    margin: 1em;
+    font: 2em "Bebas Neue", sans-serif;
+}
+
+.navbar_login {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_login, .btn_registro {
+    font: 1.5em "Bebas Neue", sans-serif;
+    color: var(--mint);
+}
+
+.btn_registro {
+    color: var(--caribbean-current);
+}
+
+a:hover, li:hover {
+    transform: scale(1.3);
+    margin: 0 1.1em;
+    transition: all 1s ease-in-out;
+}
+
+/* ---------------------------------------------------------- */
+
+/* ESTILOS DE LA PAGINA DEFAULT */
+
+.cardlist_container {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.card_container {
+    width: 250px;
+    margin: 1em;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--caribbean-current);
+    box-shadow: 5px 5px 10px var(--caribbean-current);
+    border-radius: 4px;
+}
+
+.card_img {
+    background-color: var(--white);
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    object-fit: scale-down;
+}
+
+.card_body {
+    padding: 1em;
+}
+
+.card_title {
+    font-size: 1.5em;
+}
+
+.card_precio {
+    color: var(--mint);
 }
