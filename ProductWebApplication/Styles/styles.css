@@ -73,16 +73,19 @@ h2 {
     color: var(--caribbean-current);
 }
 
-a:hover, li:hover {
+.btn_registro:hover, .btn_login:hover {
     transform: scale(1.3);
     margin: 0 1.1em;
     transition: all 1s ease-in-out;
 }
 
+ul > li:hover {
+    text-shadow: 2px 2px 10px var(--mint);
+    transition: all 1s ease;
+}
+
 /* ---------------------------------------------------------- */
-
 /* ESTILOS DE LA PAGINA DEFAULT */
-
 .cardlist_container {
     display: flex;
     flex-direction: row;
@@ -111,7 +114,11 @@ a:hover, li:hover {
 }
 
 .card_body {
-    padding: 1em;
+    margin: 1em;
+}
+
+.card_cod {
+    border-bottom: 1px solid var(--mint);
 }
 
 .card_title {
@@ -119,5 +126,51 @@ a:hover, li:hover {
 }
 
 .card_precio {
+    font-size: 1.3em;
     color: var(--mint);
+}
+
+.btn_detalle {
+    border: none;
+    padding: 0 .2em;
+    background-color: var(--mint);
+    color: var(--white);
+}
+
+.btn_detalle:hover {
+    margin: 0;
+    cursor: pointer;
+    color: var(--mint);
+    background-color: var(--white);
+    transition: all .5s ease;
+}
+
+/* ---------------------------------------------------------- */
+/* ESTILOS DE LA PAGINA LISTADOARTICULOS */
+
+.tbl_list {
+    margin: 0 auto;
+}
+
+.tbl_listheader {
+    background-color: var(--white);
+    color: var(--eerie-black);
+    padding: 1em;
+}
+
+.tbl_listitem {
+    padding: 1em;
+}
+
+.tbl_button {
+    background-color: var(--mint);
+    color: var(--eerie-black);
+    padding: .2em;
+    border-radius:2px;
+}
+
+.tbl_button:hover {
+    background-color: var(--white);
+    color: var(--eerie-black);
+    transition: all 1s ease;
 }

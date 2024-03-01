@@ -11,7 +11,11 @@ namespace ProductWebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["id"] != null)
+            {
+                int id = int.Parse(Request.QueryString["id"]);
 
+            }
         }
     }
 }

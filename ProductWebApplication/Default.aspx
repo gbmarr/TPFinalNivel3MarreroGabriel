@@ -12,9 +12,10 @@
             <div class="card_container">
                     <img class="card_img" src="<%: arti.Imagen %>" alt="" />
                     <div class="card_body">
+                        <p class="card_cod">Código de art: <%: arti.codArticulo %></p>
                         <h3 class="card_title"><%: arti.Nombre %></h3>
-                        <p class="card_desc"><%: arti.Descripcion %></p>
                         <p class="card_precio"><%: arti.Precio %></p>
+                        <a href="/Detalle.aspx?id=<%: arti.ID %>" class="btn_detalle">Ver Detalle</a>
                     </div>
             </div>
             <% } %>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace ProductWebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            gvListado.DataSource = negocio.listarConSP();
+            gvListado.DataBind();
         }
     }
 }
