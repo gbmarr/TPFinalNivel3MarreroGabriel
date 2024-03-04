@@ -16,5 +16,17 @@ namespace ProductWebApplication
             gvListado.DataSource = negocio.listarConSP();
             gvListado.DataBind();
         }
+
+        protected void gvListado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = gvListado.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioArticulo.aspx?id=" + id);
+        }
+
+        protected void gvListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvListado.PageIndex = e.NewPageIndex;
+            gvListado.DataBind();
+        }
     }
 }
