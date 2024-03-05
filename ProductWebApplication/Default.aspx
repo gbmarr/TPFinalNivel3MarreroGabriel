@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div class="main_container">
-        <h2>Bienvenido/a</h2>
+        <h2 class="page_titles">Bienvenido/a</h2>
         <asp:Label Text="Conoce nuestro stock de productos disponibles y aprovecha los mejores precios." runat="server" />
         <div class="cardlist_container">
             <% foreach (dominio.Articulo arti in ListaArticulo)

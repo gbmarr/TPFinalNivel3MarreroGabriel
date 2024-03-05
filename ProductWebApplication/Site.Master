@@ -26,8 +26,8 @@
                     </ul>
                 </div>
                 <div class="navbar_login">
-                    <a href="Login.aspx" class="btn_login">Login</a>
-                    <a href="Login.aspx" class="btn_registro">Registrarse</a>
+                    <a href="Login.aspx" class="btn_navlogin">Login</a>
+                    <a href="Login.aspx?page=registro" class="btn_navregistro">Registrarse</a>
                 </div>
             </div>
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">

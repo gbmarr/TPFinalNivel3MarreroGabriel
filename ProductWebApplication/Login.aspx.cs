@@ -11,7 +11,11 @@ namespace ProductWebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Request.QueryString["page"] != null)
+            {
+                lblLoginTitle.Text = "Registro";
+                btnLogin.Text = "Registrarse";
+            }
         }
     }
 }

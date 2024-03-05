@@ -25,7 +25,8 @@
     list-style: none;
 }
 
-h2 {
+.page_titles {
+    margin: .5em;
     font-size: 2.5em;
 }
 
@@ -64,16 +65,16 @@ h2 {
     flex-direction: column;
 }
 
-.btn_login, .btn_registro {
+.btn_navlogin, .btn_navregistro {
     font: 1.5em "Bebas Neue", sans-serif;
     color: var(--mint);
 }
 
-.btn_registro {
+.btn_navregistro {
     color: var(--caribbean-current);
 }
 
-.btn_registro:hover, .btn_login:hover {
+.btn_navregistro:hover, .btn_navlogin:hover {
     transform: scale(1.3);
     margin: 0 1.1em;
     transition: all 1s ease-in-out;
@@ -149,6 +150,10 @@ ul > li:hover {
 /* ESTILOS DE LA PAGINA LISTADOARTICULOS */
 
 .tbl_list {
+    margin: 1em auto;
+}
+
+.tbl_container {
     margin: 0 auto;
 }
 
@@ -162,15 +167,69 @@ ul > li:hover {
     padding: 1em;
 }
 
-.tbl_button {
+.tbl_button, .btn_agregar {
     background-color: var(--mint);
     color: var(--eerie-black);
     padding: .2em;
     border-radius:2px;
 }
 
-.tbl_button:hover {
+.btn_container {
+    text-align: center;
+    margin: 1em auto;
+}
+
+.btn_agregar {
+    margin: auto 1em;
+}
+
+.tbl_button:hover, .btn_agregar:hover {
     background-color: var(--white);
     color: var(--eerie-black);
+    transition: all 1s ease;
+}
+
+/* ---------------------------------------------------------- */
+/* ESTILOS DE LA PAGINA LOGIN */
+
+.login_container {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login_label {
+    font-size: 1.2em;
+}
+
+.txt_login, .btn_login {
+    padding: .2em;
+    margin: .5em;
+    width: 30%;
+    border: none;
+    border-radius: 10px;
+}
+
+.txt_login {
+    background-color: var(--white);
+    color: var(--eerie-black);
+}
+
+.btn_login {
+    background-color: var(--caribbean-current);
+}
+
+.btn_login:hover {
+    cursor: pointer;
+    background-color: var(--white);
+    color: var(--caribbean-current);
+    transition: all 1s ease;
+}
+
+.txt_login:focus {
+    border: none;
+    background-color: var(--caribbean-current);
+    color: var(--white);
     transition: all 1s ease;
 }

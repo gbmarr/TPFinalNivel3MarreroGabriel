@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div class="main_container">
-        <h2>Articulos Disponibles:</h2>
-        <div>
+        <h2 class="page_titles">Articulos Disponibles:</h2>
+        <div class="tbl_container">
             <asp:GridView ID="gvListado" CssClass="tbl_list"
                 AutoGenerateColumns="false" runat="server" DataKeyNames="ID"
                 OnSelectedIndexChanged="gvListado_SelectedIndexChanged"
@@ -20,7 +20,9 @@
                     <asp:CommandField ItemStyle-CssClass="tbl_listitem" ControlStyle-CssClass="tbl_button" HeaderStyle-CssClass="tbl_listheader" ShowSelectButton="true" SelectText="Editar" HeaderText="Acciones" />
                 </Columns>
             </asp:GridView>
-            <a href="/FormularioArticulo.aspx" class="tbl_button">Agregar</a>
+            <div class="btn_container">
+                <a href="/FormularioArticulo.aspx" class="btn_agregar">Agregar</a>
+            </div>
         </div>
     </div>
 </asp:Content>
