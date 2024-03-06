@@ -32,7 +32,7 @@ namespace ProductWebApplication
                 txtDesc.Text = seleccionado.Descripcion;
                 txtMarca.Text = seleccionado.Marca.Descripcion;
                 txtCat.Text = seleccionado.Categoria.Descripcion;
-                txtPrecio.Text = seleccionado.Precio.ToString();
+                txtPrecio.Text = "$" + seleccionado.Precio.ToString();
                 imgUrl.ImageUrl = seleccionado.Imagen;
             }
             
