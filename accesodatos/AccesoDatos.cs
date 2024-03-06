@@ -70,6 +70,21 @@ namespace accesodatos
             }
         }
 
+        // metodo para realizar acciones sobre la base de datos y que nos devuelva un numero entero
+        public int ejecutarScalar()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                return int.Parse(comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         // metodo que nos va a permitir validar esas "variables" que creamos dentro de una consulta embebida a traves de @parametro
         // cuando llamemos este metodo lo que va a suceder es que la "variable" que hemos pasado como parametro en la consulta va a
         // ser reemplazada por el valor que le asignemos al llamar al metodo.

@@ -10,7 +10,6 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
-        private string imgDefecto = "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
 
         // metodo que vamos a utilizar para obtener la lista de articulos
         public List<Articulo> listar(string id = "")

@@ -11,9 +11,26 @@ namespace ProductWebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (PaginaNoDisponible())
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
-        
+        private bool PaginaNoDisponible()
+        {
+            try
+            {
+                if (Page is Listado_de_Articulos || Page is FormularioArticulo || Page is Perfil || Page is Favoritos)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

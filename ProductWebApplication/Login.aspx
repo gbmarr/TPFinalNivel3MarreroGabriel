@@ -10,7 +10,7 @@
             <asp:TextBox ID="txtEmailLogin" CssClass="txt_login" runat="server" />
             <asp:Label Text="Password:" CssClass="login_label" runat="server" />
             <asp:TextBox ID="txtPassLogin" CssClass="txt_login" TextMode="Password" runat="server" />
-            <asp:Button ID="btnLogin" CssClass="btn_login" Text="Ingresar" runat="server" />
+            <asp:Button ID="btnLogin" OnClick="btnLogin_Click" CssClass="btn_login" Text="Ingresar" runat="server" />
         </div>
     </div>
 </asp:Content>
