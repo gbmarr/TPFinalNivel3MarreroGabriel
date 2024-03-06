@@ -180,10 +180,12 @@ ul > li:hover {
 }
 
 .btn_agregar {
+    border-radius: 5px;
     margin: auto 1em;
 }
 
 .tbl_button:hover, .btn_agregar:hover {
+    cursor: pointer;
     background-color: var(--white);
     color: var(--eerie-black);
     transition: all 1s ease;
@@ -323,19 +325,20 @@ ul > li:hover {
     width: 90%;
     margin: auto;
     display: flex;
-    flex-direction: row;
+    flex-flow: row;
     justify-content: space-around;
     border-bottom: 1px solid var(--mint);
 }
 
 .form_containerrow {
-    margin: auto;
+    padding: 1em;
+    margin: auto 1em;
     align-content: space-around;
 }
 
 .form_div {
     width: 60%;
-    margin: 2em auto;
+    margin: auto 3em;
 }
 
 .form_txt {
@@ -349,12 +352,73 @@ ul > li:hover {
 
 .form_ddl {
     margin: auto;
-    width: 90%;
+    width: 100%;
     border-radius: 5px;
     padding: .1em;
 }
 
 .form_txtID {
+    text-align: center;
     background-color: var(--caribbean-current);
     color: var(--white);
+}
+
+.form_img {
+    background-color: var(--white);
+    width: 80%;
+    border-radius: 10px;
+    margin: 2em;
+    padding: 1em;
+}
+
+.btn_eliminar, .btn_modificar {
+    background-color: var(--folly);
+    color: var(--eerie-black);
+    border-radius: 5px;
+    padding: .2em;
+    margin: .5em auto;
+}
+
+.btn_modificar {
+    background-color: var(--eerie-black);
+    color: var(--mint);
+}
+
+.btn_eliminar:hover {
+    cursor: pointer;
+    background-color: var(--eerie-black);
+    color: var(--folly);
+    transition: all 1s ease;
+}
+
+.btn_modificar:hover {
+    cursor: pointer;
+    background-color: var(--mint);
+    color: var(--eerie-black);
+    transition: all 1s ease;
+}
+
+/* ---------------------------------------------------------- */
+/* ESTILOS DE LA PAGINA PERFIL */
+
+.profile_container {
+    border: 1px solid var(--folly);
+    border-radius: 10px;
+    margin: 1em auto;
+    padding: 1em;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_txt {
+
+}
+
+.profile_id {
+    color: var(--folly);
+}
+
+.profile_img {
+
 }

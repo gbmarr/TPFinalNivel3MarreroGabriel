@@ -42,8 +42,12 @@
                 <div class="form_div">
                     <asp:Label Text="Cargar imagen:" runat="server" />
                     <asp:TextBox CssClass="form_txt" ID="txtImagen" runat="server" />
-                    <asp:Image ID="imageUrl" ImageUrl="imageurl" runat="server" />
+                    <asp:Image CssClass="form_img" ID="imageUrl" ImageUrl="imageurl" runat="server" />
                 </div>
+            </div>
+            <div class="form_containerrow">
+                <asp:Button ID="btnModificar" CssClass="btn_modificar" Text="Modificar" runat="server" />
+                <asp:Button ID="btnEliminar" CssClass="btn_eliminar" Text="Eliminar" runat="server" />
             </div>
         </div>
     </div>
