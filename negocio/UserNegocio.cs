@@ -62,5 +62,19 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public bool logueado(User usuario)
+        {
+            try
+            {
+                if (usuario != null)
+                    return true;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

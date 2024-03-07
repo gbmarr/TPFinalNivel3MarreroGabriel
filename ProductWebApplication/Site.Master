@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
         <div>
             <div class="navbar">
-                    <h1 class="navbar_title">ProductApp</h1>
+                <h1 class="navbar_title">ProductApp</h1>
                 <div>
                     <ul class="navbar_items">
                         <li><a href="Default.aspx">Inicio</a></li>
@@ -26,8 +26,16 @@
                     </ul>
                 </div>
                 <div class="navbar_login">
+                    <% if (!((dominio.User)Session["usuario"] != null))
+                        { %>
                     <a href="Login.aspx" class="btn_navlogin">Login</a>
                     <a href="Login.aspx?page=registro" class="btn_navregistro">Registrarse</a>
+                    <%}
+                        else
+                        { %>
+                    <asp:Image ID="imgPerfilLogueado" CssClass="navbar_imgperfil" ImageUrl="imageurl" runat="server" />
+                    <asp:Button ID="btnDesloguear" OnClick="btnDesloguear_Click" CssClass="btn_navdeslogin" Text="Salir" runat="server" />
+                    <%} %>
                 </div>
             </div>
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">

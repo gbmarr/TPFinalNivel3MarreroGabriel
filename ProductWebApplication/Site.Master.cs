@@ -4,20 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
+using negocio;
 
 namespace ProductWebApplication
 {
     public partial class Site : System.Web.UI.MasterPage
     {
+        public User usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (PaginaNoDisponible())
+            verificarLogueo();
+        }
+
+        // metodos para verificar si el cliente esta logueado y determinacion de las paginas a las que tiene acceso
+        private void verificarLogueo()
+        {
+            usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
+            if (PageNoDisponible())
             {
-                Response.Redirect("Login.aspx");
+                UserNegocio negocio = new UserNegocio();
+                if (!negocio.logueado(usuario))
+                {
+                    Response.Redirect("Login.aspx", false);
+                }
             }
         }
 
-        private bool PaginaNoDisponible()
+        private bool PageNoDisponible()
         {
             try
             {
@@ -31,6 +45,12 @@ namespace ProductWebApplication
             {
                 throw ex;
             }
+        }
+
+        protected void btnDesloguear_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Default.aspx", false);
         }
     }
 }
