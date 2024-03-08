@@ -17,7 +17,7 @@ namespace negocio
 
             try
             {
-                string consulta = "Select Id, admin from USERS where email = @email AND pass = @pass";
+                string consulta = "Select Id, email, pass, nombre, apellido, urlImagenPerfil, admin from USERS where email = @email AND pass = @pass";
                 datos.setearParametro("@email", usuario.Email);
                 datos.setearParametro("@pass", usuario.Pass);
                 datos.setearConsulta(consulta);
@@ -26,6 +26,11 @@ namespace negocio
                 while(datos.Lector.Read())
                 {
                     usuario.ID = (int)datos.Lector["Id"];
+                    usuario.Email = (string)datos.Lector["email"];
+                    usuario.Pass = (string)datos.Lector["pass"];
+                    usuario.Nombre = (string)datos.Lector["nombre"];
+                    usuario.Apellido = (string)datos.Lector["apellido"];
+                    usuario.UrlImagen = (string)datos.Lector["urlImagenPerfil"];
                     usuario.TipoUsuario = (bool)datos.Lector["admin"];
                     return true;
                 }

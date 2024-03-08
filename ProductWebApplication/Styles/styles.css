@@ -101,9 +101,9 @@ ul > li:hover {
 }
 
 .navbar_imgperfil {
-    transform: scale(1.8);
-    border-radius: 50%;
-    margin: 1em auto;
+    width: 30px;
+    margin: auto;
+    border-radius: 10px;
 }
 
 /* ---------------------------------------------------------- */
@@ -425,15 +425,30 @@ ul > li:hover {
 .profile_container {
     border: 1px solid var(--folly);
     border-radius: 10px;
-    margin: 1em auto;
+    margin: auto;
     padding: 1em;
     width: 50%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.profile_containerdivs {
+    width: 40%;
+}
+
+.profile_div {
+    margin: .2em;
+    padding: 1em;
+}
+
+.profile_divimg {
+    width: 40%;
+    border-radius: 10px;
 }
 
 .profile_txt {
-
+    font-size: 1.4em;
 }
 
 .profile_id {
@@ -441,5 +456,7 @@ ul > li:hover {
 }
 
 .profile_img {
-
+    width: 100%;
+    border-radius: 10px;
+    object-fit: scale-down;
 }

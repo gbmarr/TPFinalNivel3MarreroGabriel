@@ -33,7 +33,7 @@
                     <%}
                         else
                         { %>
-                    <asp:Image ID="imgPerfilLogueado" CssClass="navbar_imgperfil" ImageUrl="imageurl" runat="server" />
+                    <asp:Image ID="imgPerfilLogueado" CssClass="navbar_imgperfil" runat="server" />
                     <asp:Button ID="btnDesloguear" OnClick="btnDesloguear_Click" CssClass="btn_navdeslogin" Text="Salir" runat="server" />
                     <%} %>
                 </div>

@@ -33,13 +33,13 @@ namespace ProductWebApplication
         protected global::System.Web.UI.WebControls.Label lblNombre;
 
         /// <summary>
-        /// imgImagenPerfil control.
+        /// lblApellido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label imgImagenPerfil;
+        protected global::System.Web.UI.WebControls.Label lblApellido;
 
         /// <summary>
         /// ckbAdmin control.
@@ -49,5 +49,14 @@ namespace ProductWebApplication
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox ckbAdmin;
+
+        /// <summary>
+        /// imgPerfilUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPerfilUsuario;
     }
 }

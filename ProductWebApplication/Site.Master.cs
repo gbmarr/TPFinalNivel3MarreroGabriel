@@ -11,10 +11,29 @@ namespace ProductWebApplication
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        public User usuario;
+        private User usuario;
+        private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
         {
             verificarLogueo();
+            cargarImagen();
+        }
+
+        // metodo para cargar la imagen de perfil en la barra de navegacion
+        public void cargarImagen()
+        {
+            try
+            {
+                usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
+                if (usuario != null)
+                    imgPerfilLogueado.ImageUrl = usuario.UrlImagen;
+                else
+                    imgPerfilLogueado.ImageUrl = imgDefecto;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // metodos para verificar si el cliente esta logueado y determinacion de las paginas a las que tiene acceso
