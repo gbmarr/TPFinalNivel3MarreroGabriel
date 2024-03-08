@@ -26,6 +26,7 @@
             <div class="profile_divimg">
                 <asp:Image CssClass="profile_img" ImageUrl="imageurl" ID="imgPerfilUsuario" runat="server" />
             </div>
+            <asp:Button CssClass="profile_btnEditar" ID="btnEditarPerfil" OnClick="btnEditarPerfil_Click" Text="Editar perfil" runat="server" />
         </div>
     </div>
 </asp:Content>

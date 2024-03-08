@@ -11,10 +11,24 @@ namespace ProductWebApplication
 {
     public partial class FormularioArticulo : System.Web.UI.Page
     {
+        public bool confirmaEliminacion;
+        private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
+        private ArticuloNegocio negocio;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
+            string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+            cargarDesplegables();
 
+            if (id == "")
+                btnModificar.Text = "Agregar";
+
+            cargarCampos(id);
+        }
+
+        public void cargarDesplegables()
+        {
+            negocio = new ArticuloNegocio();
             if (!IsPostBack)
             {
                 ddlMarca.DataSource = negocio.listarConSP();
@@ -26,9 +40,13 @@ namespace ProductWebApplication
                 ddlCat.DataValueField = "ID";
                 ddlCat.DataBind();
             }
+        }
+
+        public void cargarCampos(string id)
+        {
+            negocio = new ArticuloNegocio();
             // obtengo el id si es que viene en la url
-            string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-            if (id != "")
+            if (id != "" && !IsPostBack)
             {
                 // obtengo el articulo que coincida con el id
                 Articulo modificar = (negocio.listar(id))[0];
@@ -42,7 +60,84 @@ namespace ProductWebApplication
                 ddlCat.SelectedValue = modificar.Categoria.Descripcion;
                 txtPrecio.Text = modificar.Precio.ToString();
                 txtImagen.Text = modificar.Imagen;
-                imageUrl.ImageUrl = modificar.Imagen;
+                imageUrl.ImageUrl = cargarImagen(modificar.Imagen);
+            }
+        }
+
+        private string cargarImagen(string imagen)
+        {
+            try
+            {
+                if (imagen != null || imagen != "")
+                    return imagen;
+                else
+                    return imagen = imgDefecto;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Articulo nuevo = new Articulo();
+                negocio = new ArticuloNegocio();
+
+                nuevo.ID = int.Parse(txtID.Text);
+                nuevo.codArticulo = txtCod.Text;
+                nuevo.Nombre = txtNombre.Text;
+                nuevo.Descripcion = txtDesc.Text;
+
+                nuevo.Marca = new Elemento();
+                nuevo.Marca.ID = int.Parse(ddlMarca.SelectedValue);
+
+                nuevo.Categoria = new Elemento();
+                nuevo.Categoria.ID = int.Parse(ddlCat.SelectedValue);
+
+                nuevo.Imagen = txtImagen.Text;
+                nuevo.Precio = Decimal.Parse(txtPrecio.Text);
+
+                if (Request.QueryString["id"] != null)
+                {
+                    nuevo.ID = int.Parse(txtID.Text);
+                    negocio.modificarArticuloConSP(nuevo);
+                }
+                else
+                {
+                    negocio.agregarArticuloConSP(nuevo);
+                }
+
+
+                Response.Redirect("ListadoArticulos.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("Error.aspx", false);
+            }
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            confirmaEliminacion = true;
+        }
+
+        protected void btnConfirmarEliminacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCancelarEliminacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("Default.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("Error.aspx", false);
             }
         }
     }

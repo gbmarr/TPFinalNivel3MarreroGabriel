@@ -26,5 +26,10 @@ namespace ProductWebApplication
                 ckbAdmin.Checked = usuario.TipoUsuario;
             }
         }
+
+        protected void btnEditarPerfil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

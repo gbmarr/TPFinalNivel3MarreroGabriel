@@ -17,5 +17,10 @@ namespace ProductWebApplication
             ArticuloNegocio negocio = new ArticuloNegocio();
             ListaArticulo = negocio.listarConSP();
         }
+
+        protected void cardFavorito_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -20,9 +20,12 @@
                 <div>
                     <ul class="navbar_items">
                         <li><a href="Default.aspx">Inicio</a></li>
-                        <li><a href="ListadoArticulos.aspx">Listado de Articulos</a></li>
-                        <li><a href="Favoritos.aspx">Favoritos</a></li>
-                        <li><a href="Perfil.aspx">Perfil</a></li>
+                        <% if (Session["usuario"] != null)
+                            { %>
+                                <li><a href="ListadoArticulos.aspx">Listado de Articulos</a></li>
+                                <li><a href="Favoritos.aspx">Favoritos</a></li>
+                                <li><a href="Perfil.aspx">Perfil</a></li>
+                        <%} %>
                     </ul>
                 </div>
                 <div class="navbar_login">

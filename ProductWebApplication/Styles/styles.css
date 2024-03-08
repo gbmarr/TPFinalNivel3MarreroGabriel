@@ -153,23 +153,40 @@ ul > li:hover {
 }
 
 .btn_detalle {
-    border: none;
     padding: 0 .2em;
     background-color: var(--mint);
+    border-radius: 5px;
     color: var(--white);
 }
 
 .btn_detalle:hover {
-    margin: 0;
     cursor: pointer;
     color: var(--mint);
-    background-color: var(--white);
-    transition: all .5s ease;
+    background-color: transparent;
+    border: 1px solid var(--mint);
+    transition: all 1s ease;
 }
+
+.card_favorito {
+    background-color: yellow;
+    color: var(--eerie-black);
+    border-radius: 5px;
+    padding: 0 .2em;
+    margin: auto 1em;
+    border: none;
+}
+
+.card_favorito:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid yellow;
+    color: yellow;
+    transition: all 1s ease;
+}
+
 
 /* ---------------------------------------------------------- */
 /* ESTILOS DE LA PAGINA LISTADOARTICULOS */
-
 .tbl_list {
     margin: 1em auto;
 }
@@ -419,9 +436,23 @@ ul > li:hover {
     transition: all 1s ease;
 }
 
+.btn_cancelar {
+    background-color: var(--white);
+    color: var(--eerie-black);
+    border-radius: 5px;
+    padding: .2em;
+    margin: .5em auto;
+}
+
+.btn_cancelar:hover {
+    cursor: pointer;
+    background-color: var(--eerie-black);
+    color: var(--white);
+    transition: all 1s ease;
+}
+
 /* ---------------------------------------------------------- */
 /* ESTILOS DE LA PAGINA PERFIL */
-
 .profile_container {
     border: 1px solid var(--folly);
     border-radius: 10px;
@@ -459,4 +490,21 @@ ul > li:hover {
     width: 100%;
     border-radius: 10px;
     object-fit: scale-down;
+}
+
+.profile_btnEditar {
+    margin: auto 1em;
+    color: var(--eerie-black);
+    background-color: var(--folly);
+    padding: .2em;
+    border: none;
+    border-radius: 5px;
+}
+
+.profile_btnEditar:hover {
+    cursor: pointer;
+    color: var(--folly);
+    background-color: transparent;
+    border: 1px solid var(--folly);
+    transition: all 1s ease;
 }

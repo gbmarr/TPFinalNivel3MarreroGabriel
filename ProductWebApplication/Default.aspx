@@ -10,13 +10,16 @@
             <% foreach (dominio.Articulo arti in ListaArticulo)
                 {    %>
             <div class="card_container">
-                    <img class="card_img" src="<%: arti.Imagen %>" alt="" />
-                    <div class="card_body">
-                        <p class="card_cod">Código de art: <%: arti.codArticulo %></p>
-                        <h3 class="card_title"><%: arti.Nombre %></h3>
-                        <p class="card_precio">$<%: arti.Precio %></p>
+                <img class="card_img" src="<%: arti.Imagen %>" alt="" />
+                <div class="card_body">
+                    <p class="card_cod">Código de art: <%: arti.codArticulo %></p>
+                    <h3 class="card_title"><%: arti.Nombre %></h3>
+                    <p class="card_precio">$<%: arti.Precio %></p>
+                    <div>
                         <a href="/Detalle.aspx?id=<%: arti.ID %>" class="btn_detalle">Ver Detalle</a>
+                        <asp:Button ID="cardFavorito" OnClick="cardFavorito_Click" CssClass="card_favorito" Text="Fav" runat="server" />
                     </div>
+                </div>
             </div>
             <% } %>
         </div>
