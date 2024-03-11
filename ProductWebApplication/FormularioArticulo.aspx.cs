@@ -86,7 +86,7 @@ namespace ProductWebApplication
                 Articulo nuevo = new Articulo();
                 negocio = new ArticuloNegocio();
 
-                nuevo.ID = int.Parse(txtID.Text);
+                //nuevo.ID = int.Parse(txtID.Text);
                 nuevo.codArticulo = txtCod.Text;
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDesc.Text;
@@ -126,7 +126,16 @@ namespace ProductWebApplication
 
         protected void btnConfirmarEliminacion_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                negocio = new ArticuloNegocio();
+                negocio.eliminar(int.Parse(txtID.Text));
+                Response.Redirect("ListadoArticulos.aspx");
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
 
         protected void btnCancelarEliminacion_Click(object sender, EventArgs e)

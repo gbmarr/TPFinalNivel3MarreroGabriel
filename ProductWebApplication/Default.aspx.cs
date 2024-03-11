@@ -12,6 +12,7 @@ namespace ProductWebApplication
     public partial class Default : System.Web.UI.Page
     {
         public List<Articulo> ListaArticulo { get; set; }
+        public string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -21,6 +22,23 @@ namespace ProductWebApplication
         protected void cardFavorito_Click(object sender, EventArgs e)
         {
             
+        }
+
+        public string cargarCardImg(string imagen)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(imagen))
+                    return imagen;
+                else
+                    return imgDefecto;
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
+                throw ex;
+            }
         }
     }
 }

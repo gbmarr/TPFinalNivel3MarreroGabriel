@@ -26,9 +26,12 @@ namespace ProductWebApplication
             {
                 usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
                 if (usuario != null)
-                    imgPerfilLogueado.ImageUrl = usuario.UrlImagen;
-                else
-                    imgPerfilLogueado.ImageUrl = imgDefecto;
+                {
+                    if (!string.IsNullOrEmpty(usuario.UrlImagen))
+                        imgPerfilLogueado.ImageUrl = usuario.UrlImagen;
+                    else
+                        imgPerfilLogueado.ImageUrl = imgDefecto;
+                }
             }
             catch (Exception ex)
             {

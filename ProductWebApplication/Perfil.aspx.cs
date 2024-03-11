@@ -11,19 +11,23 @@ namespace ProductWebApplication
 {
     public partial class Perfil : System.Web.UI.Page
     {
-        public User usuario { get; set; }
+        public User Usuario { get; set; }
+        private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
         {
-            usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
+            Usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
             UserNegocio negocio = new UserNegocio();
 
-            if (negocio.logueado(usuario))
+            if (negocio.logueado(Usuario))
             {
-                lblID.Text = usuario.ID.ToString();
-                lblNombre.Text = usuario.Nombre;
-                lblApellido.Text = usuario.Apellido;
-                imgPerfilUsuario.ImageUrl = usuario.UrlImagen;
-                ckbAdmin.Checked = usuario.TipoUsuario;
+                lblID.Text = Usuario.ID.ToString() ?? "#userID";
+                lblNombre.Text = Usuario.Nombre ?? "#usernombre";
+                lblApellido.Text = Usuario.Apellido ?? "#userapellido";
+                if (!string.IsNullOrEmpty(Usuario.UrlImagen))
+                    imgPerfilUsuario.ImageUrl = Usuario.UrlImagen;
+                else
+                    imgPerfilUsuario.ImageUrl = imgDefecto;
+                ckbAdmin.Checked = Usuario.TipoUsuario;
             }
         }
 

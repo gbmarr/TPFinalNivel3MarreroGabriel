@@ -13,11 +13,7 @@ namespace ProductWebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString["page"] != null)
-            {
-                lblLoginTitle.Text = "Registro";
-                btnLogin.Text = "Registrarse";
-            }
+
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -37,7 +33,7 @@ namespace ProductWebApplication
                 }
                 else
                 {
-                    Session.Add("error de logueo", "Los datos ingresados no son válidos");
+                    Session.Add("error", "Los datos ingresados no son válidos, debes registrarte");
                     Response.Redirect("Error.aspx", false);
                 }
             }
@@ -45,6 +41,25 @@ namespace ProductWebApplication
             {
                 Session.Add("error", ex);
                 Response.Redirect("Error.aspx", false);
+            }
+        }
+
+        protected void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                User nuevo = new User();
+                nuevo.Email = txtEmailLogin.Text;
+                nuevo.Pass = txtPassLogin.Text;
+
+                UserNegocio negocio = new UserNegocio();
+                nuevo.ID = negocio.agregarUsuario(nuevo);
+                Session.Add("usuario", nuevo);
+                Response.Redirect("Perfil.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
             }
         }
     }

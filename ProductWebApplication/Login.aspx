@@ -10,7 +10,14 @@
             <asp:TextBox ID="txtEmailLogin" CssClass="txt_login" runat="server" />
             <asp:Label Text="Password:" CssClass="login_label" runat="server" />
             <asp:TextBox ID="txtPassLogin" CssClass="txt_login" TextMode="Password" runat="server" />
+            <% if (!(Request.QueryString["page"] != null))
+                {%>
             <asp:Button ID="btnLogin" OnClick="btnLogin_Click" CssClass="btn_login" Text="Ingresar" runat="server" />
+            <%}
+            else
+            { %>
+            <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="btn_login" Text="Registrarsse" runat="server" />
+            <%} %>
         </div>
     </div>
 </asp:Content>

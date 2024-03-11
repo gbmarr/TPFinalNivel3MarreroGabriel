@@ -28,9 +28,12 @@ namespace negocio
                     usuario.ID = (int)datos.Lector["Id"];
                     usuario.Email = (string)datos.Lector["email"];
                     usuario.Pass = (string)datos.Lector["pass"];
-                    usuario.Nombre = (string)datos.Lector["nombre"];
-                    usuario.Apellido = (string)datos.Lector["apellido"];
-                    usuario.UrlImagen = (string)datos.Lector["urlImagenPerfil"];
+                    if(!(datos.Lector["nombre"] is DBNull))
+                        usuario.Nombre = (string)datos.Lector["nombre"];
+                    if(!(datos.Lector["apellido"] is DBNull))
+                        usuario.Apellido = (string)datos.Lector["apellido"];
+                    if(!(datos.Lector["urlImagenPerfil"] is DBNull))
+                        usuario.UrlImagen = (string)datos.Lector["urlImagenPerfil"];
                     usuario.TipoUsuario = (bool)datos.Lector["admin"];
                     return true;
                 }

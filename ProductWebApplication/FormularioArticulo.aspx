@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioArticulo.aspx.cs" Inherits="ProductWebApplication.FormularioArticulo" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
@@ -47,17 +46,17 @@
             </div>
             <div class="form_containerrow">
                 <asp:Button OnClick="btnModificar_Click" ID="btnModificar" CssClass="btn_modificar" Text="Modificar" runat="server" />
-                <asp:Button OnClick="btnEliminar_Click" ID="btnEliminar" CssClass="btn_eliminar" Text="Eliminar" runat="server" />
+                <asp:Button OnClick="btnEliminar_Click" ID="btnEliminar" ClientIDMode="Static" CssClass="btn_eliminar" Text="Eliminar" runat="server" />
             </div>
             <%if (confirmaEliminacion)
                 { %>
-            <div class="modal">
-                <h3>¿Estás seguro/a que quieres eliminar este articulo?</h3>
-                <div>
-                    <asp:Button CssClass="btn_eliminar" ID="btnConfirmarEliminacion" OnClick="btnConfirmarEliminacion_Click" Text="Eliminar" runat="server" />
-                    <asp:Button CssClass="btn_cancelar" ID="btnCancelarEliminacion" OnClick="btnCancelarEliminacion_Click" Text="Cancelar" runat="server" />
+                <div class="modal_container">
+                    <h3 class="modal_title">¿Estás seguro/a que quieres eliminar este articulo?</h3>
+                    <div>
+                        <asp:Button CssClass="btn_eliminar modal_btn" ID="btnConfirmarEliminacion" OnClick="btnConfirmarEliminacion_Click" Text="Eliminar" runat="server" />
+                        <asp:Button CssClass="btn_cancelar modal_btn" ID="btnCancelarEliminacion" OnClick="btnCancelarEliminacion_Click" Text="Cancelar" runat="server" />
+                    </div>
                 </div>
-            </div>
             <%} %>
         </div>
     </div>

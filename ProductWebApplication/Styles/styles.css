@@ -19,7 +19,7 @@
     box-sizing: border-box;
     height: fit-content;
     background-color: var(--eerie-black);
-    font: 20px "Teko", sans-serif;
+    font: 16px "Teko", sans-serif;
     color: var(--white);
     text-decoration: none;
     list-style: none;
@@ -451,6 +451,28 @@ ul > li:hover {
     transition: all 1s ease;
 }
 
+.modal_container {
+    width: 500px;
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    padding: 2em;
+    border: 1px solid var(--white);
+    border-radius: 10px;
+}
+
+.modal_title {
+    font-size: 1.5em;
+}
+
+.modal_btn {
+    font-size: 1.2em;
+}
+
+.div_blurr {
+    filter: blur(10px);
+}
+
 /* ---------------------------------------------------------- */
 /* ESTILOS DE LA PAGINA PERFIL */
 .profile_container {
@@ -507,4 +529,22 @@ ul > li:hover {
     background-color: transparent;
     border: 1px solid var(--folly);
     transition: all 1s ease;
+}
+
+/* ---------------------------------------------------------- */
+/* ESTILOS DE LA PAGINA ERROR */
+
+.error_container {
+    background-color: var(--white);
+    color: var(--eerie-black);
+    width: 500px;
+    padding: 1em;
+    margin: auto;
+    border: 1px solid var(--white);
+    border-radius: 10px;
+}
+
+.error_text {
+    background-color: transparent;
+    color: var(--eerie-black);
 }
