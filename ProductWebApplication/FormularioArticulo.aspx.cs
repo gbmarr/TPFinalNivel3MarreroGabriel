@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using negocio;
 using dominio;
+using System.Web.UI.HtmlControls;
 
 namespace ProductWebApplication
 {
@@ -17,13 +18,16 @@ namespace ProductWebApplication
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-            cargarDesplegables();
+            if (!IsPostBack)
+            {
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                cargarDesplegables();
 
-            if (id == "")
-                btnModificar.Text = "Agregar";
+                if (id == "")
+                    btnModificar.Text = "Agregar";
 
-            cargarCampos(id);
+                cargarCampos(id);
+            }
         }
 
         public void cargarDesplegables()

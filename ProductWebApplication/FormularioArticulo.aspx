@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioArticulo.aspx.cs" Inherits="ProductWebApplication.FormularioArticulo" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="main_container">
         <h2 class="page_titles">Agregar Articulo</h2>
         <div class="form_container">
@@ -44,12 +46,15 @@
                     <asp:Image CssClass="form_img" ID="imageUrl" runat="server" />
                 </div>
             </div>
-            <div class="form_containerrow">
-                <asp:Button OnClick="btnModificar_Click" ID="btnModificar" CssClass="btn_modificar" Text="Modificar" runat="server" />
-                <asp:Button OnClick="btnEliminar_Click" ID="btnEliminar" ClientIDMode="Static" CssClass="btn_eliminar" Text="Eliminar" runat="server" />
-            </div>
-            <%if (confirmaEliminacion)
-                { %>
+        </div>
+        <asp:UpdatePanel ID="UPContainerButtons" ClientIDMode="Static" runat="server">
+            <ContentTemplate>
+                <div class="form_containerbtn">
+                    <asp:Button OnClick="btnModificar_Click" ID="btnModificar" CssClass="btn_modificar" Text="Modificar" runat="server" />
+                    <asp:Button OnClick="btnEliminar_Click" ID="btnEliminar" ClientIDMode="Static" CssClass="btn_eliminar" Text="Eliminar" runat="server" />
+                </div>
+                <%if (confirmaEliminacion)
+                    { %>
                 <div class="modal_container">
                     <h3 class="modal_title">¿Estás seguro/a que quieres eliminar este articulo?</h3>
                     <div>
@@ -57,7 +62,8 @@
                         <asp:Button CssClass="btn_cancelar modal_btn" ID="btnCancelarEliminacion" OnClick="btnCancelarEliminacion_Click" Text="Cancelar" runat="server" />
                     </div>
                 </div>
-            <%} %>
-        </div>
+                <%} %>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
 </asp:Content>
