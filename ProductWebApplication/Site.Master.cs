@@ -11,13 +11,14 @@ namespace ProductWebApplication
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        private User usuario;
+        public bool Administrador { get; set; }
+        public User usuario;
         private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
         {
             verificarLogueo();
             cargarImagen();
-        }
+        }        
 
         // metodo para cargar la imagen de perfil en la barra de navegacion
         public void cargarImagen()
@@ -49,6 +50,15 @@ namespace ProductWebApplication
                 if (!negocio.logueado(usuario))
                 {
                     Response.Redirect("Login.aspx", false);
+                }
+                else if(usuario.TipoUsuario != true)
+                {
+                    Administrador = false;
+                    if(Page is Listado_de_Articulos || Page is FormularioArticulo)
+                    {
+                        Session.Add("error", "Las credenciales actuales no son suficientes para poder acceder al contenido de Administradores.");
+                        Response.Redirect("Error.aspx", false);
+                    }
                 }
             }
         }
