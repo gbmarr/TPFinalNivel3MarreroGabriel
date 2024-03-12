@@ -11,8 +11,8 @@ namespace ProductWebApplication
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        public bool Administrador { get; set; }
         public User usuario;
+        public bool Administrador;
         private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,6 +59,8 @@ namespace ProductWebApplication
                         Session.Add("error", "Las credenciales actuales no son suficientes para poder acceder al contenido de Administradores.");
                         Response.Redirect("Error.aspx", false);
                     }
+                }else if(usuario.TipoUsuario == true){
+                    Administrador = true;
                 }
             }
         }

@@ -66,4 +66,6 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
+    <!-- MODAL -->
+    <script src="Scripts/modalForm.js"></script>
 </asp:Content>

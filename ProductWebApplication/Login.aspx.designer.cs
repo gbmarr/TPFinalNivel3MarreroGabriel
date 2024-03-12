@@ -15,6 +15,15 @@ namespace ProductWebApplication
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// lblLoginTitle control.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,15 @@ namespace ProductWebApplication
         protected global::System.Web.UI.WebControls.TextBox txtPassLogin;
 
         /// <summary>
+        /// UPContainerButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UPContainerButtons;
+
+        /// <summary>
         /// btnLogin control.
         /// </summary>
         /// <remarks>
@@ -58,5 +76,14 @@ namespace ProductWebApplication
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrarse;
+
+        /// <summary>
+        /// btnEntendido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEntendido;
     }
 }

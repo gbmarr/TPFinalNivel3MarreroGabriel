@@ -76,7 +76,8 @@
     <Content Include="ListadoArticulos.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Perfil.aspx" />
-    <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\modalForm.js" />
+    <Content Include="Scripts\modalLogin.js" />
     <Content Include="Styles\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
