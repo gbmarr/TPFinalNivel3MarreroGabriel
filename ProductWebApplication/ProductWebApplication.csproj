@@ -78,6 +78,7 @@
     <Content Include="Perfil.aspx" />
     <Content Include="Scripts\modalForm.js" />
     <Content Include="Scripts\modalLogin.js" />
+    <Content Include="Scripts\modalRegistro.js" />
     <Content Include="Styles\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>

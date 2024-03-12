@@ -20,6 +20,14 @@ namespace ProductWebApplication
 
             if (negocio.logueado(Usuario))
             {
+                cargarCampos(Usuario);
+            }
+        }
+
+        private void cargarCampos(User Usuario)
+        {
+            try
+            {
                 lblID.Text = Usuario.ID.ToString() ?? "#userID";
                 lblNombre.Text = Usuario.Nombre ?? "#usernombre";
                 lblApellido.Text = Usuario.Apellido ?? "#userapellido";
@@ -29,11 +37,16 @@ namespace ProductWebApplication
                     imgPerfilUsuario.ImageUrl = imgDefecto;
                 ckbAdmin.Checked = Usuario.TipoUsuario;
             }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void btnEditarPerfil_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Perfil.aspx?profile=edit", false);
         }
     }
 }

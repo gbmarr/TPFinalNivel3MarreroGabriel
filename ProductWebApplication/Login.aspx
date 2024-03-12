@@ -18,10 +18,14 @@
                     <% if (!(Request.QueryString["page"] != null))
                         {%>
                     <asp:Button ID="btnLogin" ClientIDMode="Static" OnClick="btnLogin_Click" CssClass="btn_login" Text="Ingresar" runat="server" />
+                    <!-- MODAL -->
+                    <script src="Scripts/modalLogin.js"></script>
                     <%}
                         else
                         { %>
-                    <asp:Button ID="btnRegistrarse" OnClick="btnRegistrarse_Click" CssClass="btn_login" Text="Registrarsse" runat="server" />
+                    <asp:Button ID="btnRegistrarse" ClientIDMode="Static" OnClick="btnRegistrarse_Click" CssClass="btn_login" Text="Registrarse" runat="server" />
+                    <!-- MODAL -->
+                    <script src="Scripts/modalRegistro.js"></script>
                     <%} %>
                     <%if (camposInvalidos)
                         { %>
@@ -33,7 +37,5 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
-    <!-- MODAL -->
-    <script src="Scripts/modalLogin.js"></script>
     </div>
 </asp:Content>
