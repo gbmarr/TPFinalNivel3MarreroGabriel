@@ -41,9 +41,13 @@
             </div>
             <div class="form_containerrow">
                 <div class="form_div">
-                    <asp:Label Text="Cargar imagen:" runat="server" />
-                    <asp:TextBox CssClass="form_txt" ID="txtImagen" runat="server" />
-                    <asp:Image CssClass="form_img" ID="imageUrl" runat="server" />
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:Label Text="Cargar imagen:" runat="server" />
+                            <asp:TextBox OnTextChanged="txtImagen_TextChanged" AutoPostBack="true" CssClass="form_txt" ID="txtImagen" runat="server" />
+                            <asp:Image CssClass="form_img" ID="imageUrl" runat="server" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>

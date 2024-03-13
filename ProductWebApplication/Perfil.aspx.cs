@@ -11,6 +11,7 @@ namespace ProductWebApplication
 {
     public partial class Perfil : System.Web.UI.Page
     {
+        public bool isAdmin { get; set; }
         public User Usuario { get; set; }
         private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
@@ -21,6 +22,10 @@ namespace ProductWebApplication
             if (negocio.logueado(Usuario))
             {
                 cargarCampos(Usuario);
+                if (Request.QueryString["id"] != null)
+                    isAdmin = true;
+                else
+                    isAdmin = false;
             }
         }
 
@@ -46,7 +51,7 @@ namespace ProductWebApplication
 
         protected void btnEditarPerfil_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Perfil.aspx?profile=edit", false);
+            Response.Redirect("Perfil.aspx?id=" + Usuario.ID, false);
         }
     }
 }

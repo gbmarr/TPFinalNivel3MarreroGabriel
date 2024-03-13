@@ -162,5 +162,10 @@ namespace ProductWebApplication
                 Response.Redirect("Error.aspx", false);
             }
         }
+
+        protected void txtImagen_TextChanged(object sender, EventArgs e)
+        {
+            imageUrl.ImageUrl = cargarImagen(txtImagen.Text);
+        }
     }
 }
