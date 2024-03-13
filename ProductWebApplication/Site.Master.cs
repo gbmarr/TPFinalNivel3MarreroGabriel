@@ -16,6 +16,8 @@ namespace ProductWebApplication
         private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+                Administrador = Session["usuario"] != null ? ((User)Session["usuario"]).TipoUsuario : Administrador;
             verificarLogueo();
             cargarImagen();
         }        

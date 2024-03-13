@@ -32,17 +32,25 @@ namespace ProductWebApplication
 
         public void cargarDesplegables()
         {
-            negocio = new ArticuloNegocio();
-            if (!IsPostBack)
+            try
             {
-                ddlMarca.DataSource = negocio.listarConSP();
-                ddlMarca.DataTextField = "Marca";
-                ddlMarca.DataValueField = "ID";
-                ddlMarca.DataBind();
-                ddlCat.DataSource = negocio.listarConSP();
-                ddlCat.DataTextField = "Categoria";
-                ddlCat.DataValueField = "ID";
-                ddlCat.DataBind();
+                negocio = new ArticuloNegocio();
+                if (!IsPostBack)
+                {
+                    ddlMarca.DataSource = negocio.listarConSP();
+                    ddlMarca.DataTextField = "Marca";
+                    ddlMarca.DataValueField = "ID";
+                    ddlMarca.DataBind();
+                    ddlCat.DataSource = negocio.listarConSP();
+                    ddlCat.DataTextField = "Categoria";
+                    ddlCat.DataValueField = "ID";
+                    ddlCat.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -119,6 +127,7 @@ namespace ProductWebApplication
             }
             catch (Exception ex)
             {
+                Session.Add("error", ex);
                 Response.Redirect("Error.aspx", false);
             }
         }

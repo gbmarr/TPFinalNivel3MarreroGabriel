@@ -6,6 +6,12 @@
     <div class="main_container">
         <h2 class="page_titles">Bienvenido/a</h2>
         <asp:Label Text="Conoce nuestro stock de productos disponibles y aprovecha los mejores precios." runat="server" />
+        <div class="container_busqueda">
+            <asp:DropDownList ID="ddlCampoBusqueda" CssClass="busqueda_ddl" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddlCriterioBusqueda" CssClass="busqueda_ddl" runat="server"></asp:DropDownList>
+            <asp:TextBox ID="txtValorBusqueda" CssClass="busqueda_txt" runat="server" />
+            <asp:Button ID="btnBusqueda" CssClass="btn_agregar" Text="Buscar" runat="server" />
+        </div>
         <div class="cardlist_container">
             <% foreach (dominio.Articulo arti in ListaArticulo)
                 {    %>
