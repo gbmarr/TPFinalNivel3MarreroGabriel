@@ -25,13 +25,17 @@ namespace ProductWebApplication
                 if (Request.QueryString["id"] != null)
                 {
                     isEdit = true;
-                    txtPerfilID.Text = Usuario.ID.ToString();
-                    txtPerfilNombre.Text = Usuario.Nombre;
-                    txtPerfilApellido.Text = Usuario.Apellido;
-                    ckdAdmin.Checked = Usuario.TipoUsuario;
                     if (!IsPostBack)
+                    {
+                        txtPerfilID.Text = Usuario.ID.ToString();
+                        txtPerfilEmail.Text = Usuario.Email;
+                        txtPerfilPass.Text = Usuario.Pass;
+                        txtPerfilNombre.Text = Usuario.Nombre;
+                        txtPerfilApellido.Text = Usuario.Apellido;
+                        ckdAdmin.Checked = Usuario.TipoUsuario;
                         txtPerfilImagen.Text = Usuario.UrlImagen;
-                    imgPerfilUsuarioEdit.ImageUrl = Usuario.UrlImagen;
+                        imgPerfilUsuarioEdit.ImageUrl = Usuario.UrlImagen;
+                    }
                 }
                 else
                 {
@@ -81,7 +85,7 @@ namespace ProductWebApplication
 
                 if(Request.QueryString["id"] != null)
                     negocio.editarPerfil(Usuario);
-                Response.Redirect("Perfil.aspx");
+                Response.Redirect("Perfil.aspx", false);
             }
             catch (Exception ex)
             {
