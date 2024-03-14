@@ -30,7 +30,7 @@ namespace ProductWebApplication
             }
         }
 
-        public void cargarDesplegables()
+        private void cargarDesplegables()
         {
             try
             {
@@ -54,7 +54,7 @@ namespace ProductWebApplication
             }
         }
 
-        public void cargarCampos(string id)
+        private void cargarCampos(string id)
         {
             negocio = new ArticuloNegocio();
             // obtengo el id si es que viene en la url

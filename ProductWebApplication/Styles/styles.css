@@ -118,8 +118,8 @@ ul > li:hover {
 }
 
 .busqueda_ddl, .busqueda_txt {
-    width: 25%;
-    margin: auto 1em;
+    width: 150px;
+    margin: auto;
     border-radius: 5px;
     padding: .1em;
 }
