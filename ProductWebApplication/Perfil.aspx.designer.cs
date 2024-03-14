@@ -78,6 +78,33 @@ namespace ProductWebApplication
         protected global::System.Web.UI.WebControls.Button btnEditarPerfil;
 
         /// <summary>
+        /// txtPerfilID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPerfilID;
+
+        /// <summary>
+        /// txtPerfilEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPerfilEmail;
+
+        /// <summary>
+        /// txtPerfilPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPerfilPass;
+
+        /// <summary>
         /// txtPerfilNombre control.
         /// </summary>
         /// <remarks>

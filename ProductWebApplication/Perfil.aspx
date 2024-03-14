@@ -35,6 +35,18 @@
                 {%>
             <div class="profile_containerdivs">
                 <div class="profile_div">
+                    <asp:Label Text="ID:" runat="server" />
+                    <asp:TextBox CssClass="form_txt" ID="txtPerfilID" Enabled="false" runat="server" />
+                </div>
+                <div class="profile_div">
+                    <asp:Label Text="Email:" runat="server" />
+                    <asp:TextBox CssClass="form_txt" ID="txtPerfilEmail" Enabled="false" runat="server" />
+                </div>
+                <div class="profile_div">
+                    <asp:Label Text="Password:" runat="server" />
+                    <asp:TextBox CssClass="form_txt" ID="txtPerfilPass" runat="server" />
+                </div>
+                <div class="profile_div">
                     <asp:Label Text="Nombre:" runat="server" />
                     <asp:TextBox CssClass="form_txt" ID="txtPerfilNombre" runat="server" />
                 </div>

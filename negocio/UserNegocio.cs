@@ -84,5 +84,31 @@ namespace negocio
                 throw ex;
             }
         }
+
+        public void editarPerfil(User usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("editarPerfil");
+                datos.setearParametro("@email", usuario.Email);
+                datos.setearParametro("@pass", usuario.Pass);
+                datos.setearParametro("@nombre", usuario.Nombre);
+                datos.setearParametro("@apellido", usuario.Apellido);
+                datos.setearParametro("@img", usuario.UrlImagen);
+                datos.setearParametro("@admin", usuario.TipoUsuario);
+                datos.setearParametro("@id", usuario.ID);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

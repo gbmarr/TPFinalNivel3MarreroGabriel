@@ -25,10 +25,11 @@ namespace ProductWebApplication
                 if (Request.QueryString["id"] != null)
                 {
                     isEdit = true;
+                    txtPerfilID.Text = Usuario.ID.ToString();
                     txtPerfilNombre.Text = Usuario.Nombre;
                     txtPerfilApellido.Text = Usuario.Apellido;
                     ckdAdmin.Checked = Usuario.TipoUsuario;
-                    if(!IsPostBack)
+                    if (!IsPostBack)
                         txtPerfilImagen.Text = Usuario.UrlImagen;
                     imgPerfilUsuarioEdit.ImageUrl = Usuario.UrlImagen;
                 }
@@ -66,7 +67,27 @@ namespace ProductWebApplication
 
         protected void btnAceptarEditPerfil_Click(object sender, EventArgs e)
         {
+            try
+            {
+                UserNegocio negocio = new UserNegocio();
 
+                Usuario.ID = int.Parse(txtPerfilID.Text);
+                Usuario.Email = txtPerfilEmail.Text;
+                Usuario.Pass = txtPerfilPass.Text;
+                Usuario.Nombre = txtPerfilNombre.Text;
+                Usuario.Apellido = txtPerfilApellido.Text;
+                Usuario.UrlImagen = txtPerfilImagen.Text;
+                Usuario.TipoUsuario = ckdAdmin.Checked;
+
+                if(Request.QueryString["id"] != null)
+                    negocio.editarPerfil(Usuario);
+                Response.Redirect("Perfil.aspx");
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw ex;
+            }
         }
 
         protected void txtPerfilImagen_TextChanged(object sender, EventArgs e)
@@ -78,13 +99,14 @@ namespace ProductWebApplication
         {
             try
             {
-                if (imagen != null || imagen != "")
+                if (!string.IsNullOrEmpty(imagen))
                     return imagen;
                 else
                     return imagen = imgDefecto;
             }
             catch (Exception ex)
             {
+                Session.Add("error", ex);
                 throw ex;
             }
         }
