@@ -227,21 +227,21 @@ namespace negocio
 
             try
             {
-                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, IdMarca, M.Descripcion Marca, IdCategoria, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.Id AND A.IdCategoria = C.Id AND ";
+                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, A.IdMarca, M.Descripcion Marca, A.IdCategoria, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.Id AND A.IdCategoria = C.Id AND ";
 
                 switch (campo)
                 {
-                    case "Codigo":
+                    case "Código":
                         switch (criterio)
                         {
-                            case "Mayor a":
-                                consulta += "Codigo > " + filtro;
-                                break;       
-                            case "Menor a":  
-                                consulta += "Codigo < " + filtro;
+                            case "Comienza con":
+                                consulta += "Codigo like '" + filtro + "%'";
                                 break;
-                            case "Igual a":
-                                consulta += "Codigo = " + filtro;
+                            case "Termina con":
+                                consulta += "Codigo like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "Codigo like '%" + filtro + "%'";
                                 break;
                         }
                         break;
@@ -259,17 +259,17 @@ namespace negocio
                                 break;
                         }
                         break;
-                    case "Descripción":
+                    case "Precio":
                         switch (criterio)
                         {
-                            case "Comienza con":
-                                consulta += "A.Descripcion like '" + filtro + "%'";
+                            case "Mayor a":
+                                consulta += "Precio > " + filtro;
                                 break;
-                            case "Termina con":
-                                consulta += "A.Descripcion like '%" + filtro + "'";
+                            case "Igual":
+                                consulta += "Precio = " + filtro;
                                 break;
-                            case "Contiene":
-                                consulta += "A.Descripcion like '%" + filtro + "%'";
+                            case "Menor a":
+                                consulta += "Precio < " + filtro;
                                 break;
                         }
                         break;
@@ -296,7 +296,6 @@ namespace negocio
 
                     listafiltrada.Add(auxiliar);
                 }
-
                 return listafiltrada;
             }
             catch (Exception ex)

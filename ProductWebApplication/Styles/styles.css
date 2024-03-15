@@ -129,6 +129,14 @@ ul > li:hover {
     color: var(--eerie-black);
 }
 
+.btn_desactivado {
+    background-color: dimgrey;
+    color: var(--white);
+    border-radius: 5px;
+    margin: auto 1em;
+    padding: .2em;
+}
+
 .cardlist_container {
     display: flex;
     flex-direction: row;
@@ -229,7 +237,7 @@ ul > li:hover {
     background-color: var(--mint);
     color: var(--eerie-black);
     padding: .2em;
-    border-radius:2px;
+    border-radius: 2px;
 }
 
 .btn_container {

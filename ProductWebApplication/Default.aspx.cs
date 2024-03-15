@@ -18,12 +18,14 @@ namespace ProductWebApplication
         {
             negocio = new ArticuloNegocio();
             ListaArticulo = negocio.listarConSP();
+            if (IsPostBack)
+                ListaArticulo = Session["listaArticulos"] != null ? (List<Articulo>)Session["listaArticulos"] : ListaArticulo;
             cargarDesplegables();
         }
 
         protected void cardFavorito_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         public string cargarCardImg(string imagen)
@@ -49,10 +51,9 @@ namespace ProductWebApplication
             {
                 if (!IsPostBack)
                 {
+                    ddlCampoBusqueda.Items.Clear();
                     ddlCampoBusqueda.Items.Add("Código");
                     ddlCampoBusqueda.Items.Add("Nombre");
-                    ddlCampoBusqueda.Items.Add("Marca");
-                    ddlCampoBusqueda.Items.Add("Categoría");
                     ddlCampoBusqueda.Items.Add("Precio");
                 }
             }
@@ -68,14 +69,14 @@ namespace ProductWebApplication
             try
             {
                 string campo = ddlCampoBusqueda.SelectedValue;
-                if(campo == "Nombre" || campo == "Código" || campo == "Marca" || campo == "Categoría")
+                if (campo == "Nombre" || campo == "Código" || campo == "Marca" || campo == "Categoría")
                 {
                     ddlCriterioBusqueda.Items.Clear();
                     ddlCriterioBusqueda.Items.Add("Comienza con");
                     ddlCriterioBusqueda.Items.Add("Contiene");
                     ddlCriterioBusqueda.Items.Add("Termina con");
                 }
-                else if(campo == "Precio")
+                else if (campo == "Precio")
                 {
                     ddlCriterioBusqueda.Items.Clear();
                     ddlCriterioBusqueda.Items.Add("Menor a");
@@ -88,6 +89,58 @@ namespace ProductWebApplication
                 Session.Add("error", ex);
                 Response.Redirect("Error.aspx", false);
             }
+        }
+
+        protected void txtValorBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string campo = ddlCampoBusqueda.SelectedValue;
+                string criterio = ddlCriterioBusqueda.SelectedValue;
+                string filtro = txtValorBusqueda.Text;
+
+                if(!string.IsNullOrEmpty(campo) || !string.IsNullOrEmpty(criterio) || !string.IsNullOrEmpty(filtro))
+                {
+                    btnBusqueda.Enabled = true;
+                    btnBusqueda.CssClass = "btn_agregar";
+                }
+                else
+                {
+                    btnBusqueda.Enabled = false;
+                    btnBusqueda.CssClass = "btn_desactivado";
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
+            }
+        }
+
+        protected void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string campo = ddlCampoBusqueda.SelectedValue;
+                string criterio = ddlCriterioBusqueda.SelectedValue;
+                string filtro = txtValorBusqueda.Text;
+                if (!string.IsNullOrEmpty(campo) || !string.IsNullOrEmpty(criterio) || string.IsNullOrEmpty(filtro))
+                {
+                    negocio = new ArticuloNegocio();
+                    ListaArticulo = negocio.filtrar(campo, criterio, filtro);
+                    Session.Add("listaArticulos", ListaArticulo);
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
+        }
+
+        protected void btnResetBusqueda_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
