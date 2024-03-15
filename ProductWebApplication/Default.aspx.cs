@@ -14,6 +14,7 @@ namespace ProductWebApplication
         public List<Articulo> ListaArticulo { get; set; }
         private ArticuloNegocio negocio;
         public string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             negocio = new ArticuloNegocio();
@@ -140,7 +141,19 @@ namespace ProductWebApplication
 
         protected void btnResetBusqueda_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                negocio = new ArticuloNegocio();
+                ListaArticulo = negocio.listarConSP();
+                ddlCriterioBusqueda.Items.Clear();
+                cargarDesplegables();
+                txtValorBusqueda.Text = "";
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

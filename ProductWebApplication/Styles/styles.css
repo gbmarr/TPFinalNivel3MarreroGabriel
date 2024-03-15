@@ -196,7 +196,7 @@ ul > li:hover {
     transition: all 1s ease;
 }
 
-.card_favorito {
+.card_btnFavClick {
     background-color: yellow;
     color: var(--eerie-black);
     border-radius: 5px;
@@ -205,11 +205,20 @@ ul > li:hover {
     border: none;
 }
 
-.card_favorito:hover {
-    cursor: pointer;
+.card_btnFav {
     background-color: transparent;
     border: 1px solid yellow;
+    border-radius: 5px;
+    padding: 0 .2em;
+    margin: auto 1em;
     color: yellow;
+}
+
+.card_btnFav:hover {
+    cursor: pointer;
+    background-color: yellow;
+    color: var(--eerie-black);
+    border: 1px solid yellow;
     transition: all 1s ease;
 }
 

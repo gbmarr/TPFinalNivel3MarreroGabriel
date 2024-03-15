@@ -32,7 +32,7 @@
                                 <a href="/Detalle.aspx?id=<%: arti.ID %>" class="btn_detalle">Ver Detalle</a>
                                 <% if (Session["usuario"] != null)
                                     { %>
-                                <asp:Button ID="cardFavorito" OnClick="cardFavorito_Click" CssClass="card_favorito" Text="Fav" runat="server" />
+                                <asp:Button ID="cardFavorito" OnClick="cardFavorito_Click" CssClass="card_btnFav" Text="Fav" runat="server" />
                                 <%} %>
                             </div>
                         </div>

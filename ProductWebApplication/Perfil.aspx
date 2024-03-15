@@ -44,7 +44,7 @@
                 </div>
                 <div class="profile_div">
                     <asp:Label Text="Password:" runat="server" />
-                    <asp:TextBox CssClass="form_txt" ID="txtPerfilPass" TextMode="Password" runat="server" />
+                    <asp:TextBox CssClass="form_txt" ID="txtPerfilPass" runat="server" />
                 </div>
                 <div class="profile_div">
                     <asp:Label Text="Nombre:" runat="server" />

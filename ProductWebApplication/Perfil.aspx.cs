@@ -103,10 +103,10 @@ namespace ProductWebApplication
         {
             try
             {
-                if (!string.IsNullOrEmpty(imagen))
+                if (!string.IsNullOrEmpty(imagen) || !string.IsNullOrWhiteSpace(imagen))
                     return imagen;
                 else
-                    return imagen = imgDefecto;
+                    return imgDefecto;
             }
             catch (Exception ex)
             {
