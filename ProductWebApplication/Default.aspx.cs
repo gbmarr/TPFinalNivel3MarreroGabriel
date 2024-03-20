@@ -26,7 +26,24 @@ namespace ProductWebApplication
 
         protected void cardFavorito_Click(object sender, EventArgs e)
         {
+            FavoritoNegocio negocioFavs = new FavoritoNegocio();
+            try
+            {
+                User usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
 
+                if (usuario != null)
+                {
+                    int idUser = usuario.ID;
+                    
+                    
+                    negocioFavs.agregarFavorito(idUser);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
 
         public string cargarCardImg(string imagen)
