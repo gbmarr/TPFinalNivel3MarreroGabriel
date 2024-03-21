@@ -19,32 +19,18 @@ namespace ProductWebApplication
         {
             negocio = new ArticuloNegocio();
             ListaArticulo = negocio.listarConSP();
-            if (IsPostBack)
-                ListaArticulo = Session["listaArticulos"] != null ? (List<Articulo>)Session["listaArticulos"] : ListaArticulo;
+
+            if (!IsPostBack)
+            {
+                repeaterArti.DataSource = ListaArticulo;
+                repeaterArti.DataBind();
+                Session.Add("listaArticulos", ListaArticulo);
+            }
+
             cargarDesplegables();
         }
 
-        protected void cardFavorito_Click(object sender, EventArgs e)
-        {
-            FavoritoNegocio negocioFavs = new FavoritoNegocio();
-            try
-            {
-                User usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
-
-                if (usuario != null)
-                {
-                    int idUser = usuario.ID;
-                    
-                    
-                    negocioFavs.agregarFavorito(idUser);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Session.Add("error", ex);
-            }
-        }
+        
 
         public string cargarCardImg(string imagen)
         {
@@ -146,6 +132,8 @@ namespace ProductWebApplication
                 {
                     negocio = new ArticuloNegocio();
                     ListaArticulo = negocio.filtrar(campo, criterio, filtro);
+                    repeaterArti.DataSource = ListaArticulo;
+                    repeaterArti.DataBind();
                     Session.Add("listaArticulos", ListaArticulo);
                 }
             }
@@ -163,14 +151,22 @@ namespace ProductWebApplication
                 negocio = new ArticuloNegocio();
                 ListaArticulo = negocio.listarConSP();
                 ddlCriterioBusqueda.Items.Clear();
+                repeaterArti.DataSource = ListaArticulo;
+                repeaterArti.DataBind();
                 cargarDesplegables();
                 txtValorBusqueda.Text = "";
+                btnBusqueda.Enabled = false;
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex);
                 Response.Redirect("Error.aspx", false);
             }
+        }
+
+        protected void cardFavorito_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

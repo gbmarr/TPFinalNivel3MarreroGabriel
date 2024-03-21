@@ -20,24 +20,25 @@
                     <asp:Button ID="btnResetBusqueda" OnClick="btnResetBusqueda_Click" CssClass="btn_cancelar" Text="Resetear" runat="server" />
                 </div>
                 <div class="cardlist_container">
-                    <% foreach (dominio.Articulo arti in ListaArticulo)
-                        {    %>
-                    <div class="card_container">
-                        <img class="card_img" src="<%: cargarCardImg(arti.Imagen) %>" alt="" />
-                        <div class="card_body">
-                            <p class="card_cod">Código de art: <%: arti.codArticulo %></p>
-                            <h3 class="card_title"><%: arti.Nombre %></h3>
-                            <p class="card_precio">$<%: arti.Precio %></p>
-                            <div>
-                                <a href="/Detalle.aspx?id=<%: arti.ID %>" class="btn_detalle">Ver Detalle</a>
-                                <% if (Session["usuario"] != null)
-                                    { %>
-                                <asp:Button ID="cardFavorito" OnClick="cardFavorito_Click" CssClass="card_btnFav" Text="Fav" runat="server" />
-                                <%} %>
+                    <asp:Repeater ID="repeaterArti" runat="server">
+                        <ItemTemplate>
+                            <div class="card_container">
+                                <img class="card_img" src="<%#Eval("Imagen") %>" alt="Alternate Text" />
+                                <div class="card_body">
+                                    <p class="card_cod">Código de art.:<%#Eval("codArticulo") %></p>
+                                    <h3 class="card_title"><%#Eval("Nombre") %></h3>
+                                    <p class="card_precio">$<%#Eval("Precio") %></p>
+                                    <div>
+                                        <a href="/Detalle.aspx?id=<%#Eval("ID") %>" class="btn_detalle">Ver Detalle</a>
+                                        <%if (Session["usuario"] != null)
+                                            { %>
+                                        <asp:Button ID="cardFavorito" OnClick="cardFavorito_Click" CommandArgument='<%#Eval("ID") %>' CommandName="artiID" CssClass="card_btnFav" Text="Fav" runat="server" />
+                                        <%} %>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <% } %>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>

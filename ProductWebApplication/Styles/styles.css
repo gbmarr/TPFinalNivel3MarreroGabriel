@@ -196,15 +196,6 @@ ul > li:hover {
     transition: all 1s ease;
 }
 
-.card_btnFavClick {
-    background-color: yellow;
-    color: var(--eerie-black);
-    border-radius: 5px;
-    padding: 0 .2em;
-    margin: auto 1em;
-    border: none;
-}
-
 .card_btnFav {
     background-color: transparent;
     border: 1px solid yellow;
@@ -212,6 +203,15 @@ ul > li:hover {
     padding: 0 .2em;
     margin: auto 1em;
     color: yellow;
+}
+
+.card_btnFavClick {
+    background-color: yellow;
+    color: var(--eerie-black);
+    border-radius: 5px;
+    padding: 0 .2em;
+    margin: auto 1em;
+    border: none;
 }
 
 .card_btnFav:hover {
