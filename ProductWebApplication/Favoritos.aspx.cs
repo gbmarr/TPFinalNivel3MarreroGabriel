@@ -16,13 +16,16 @@ namespace ProductWebApplication
         public string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
         {
-            int idUser = ((User)Session["usuario"]).ID;
+            User usuario = Session["usuario"] != null ? ((User)Session["usuario"]) : null;
 
-            if (string.IsNullOrEmpty(idUser.ToString()))
+            if (usuario != null)
             {
-                ListaFavorito = negocio.listarFavoritos(idUser);
-                repeaterFav.DataSource = ListaFavorito;
-                repeaterFav.DataBind();
+                ListaFavorito = negocio.listarFavoritos(usuario.ID);
+                if (ListaFavorito != null)
+                {
+                    repeaterFav.DataSource = ListaFavorito;
+                    repeaterFav.DataBind();
+                }
             }
         }
 

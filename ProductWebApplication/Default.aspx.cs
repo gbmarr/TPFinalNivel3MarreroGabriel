@@ -25,7 +25,6 @@ namespace ProductWebApplication
             {
                 repeaterArti.DataSource = ListaArticulo;
                 repeaterArti.DataBind();
-                Session.Add("listaArticulos", ListaArticulo);
             }
 
             cargarDesplegables();
@@ -183,18 +182,37 @@ namespace ProductWebApplication
                 if (usuario != null)
                 {
                     string idArti = ((Button)sender).CommandArgument;
-                    //favorito = (Articulo)ListaArticulo[idArti];
+                    ListaFavoritos = negocioFavs.listarFavoritos(usuario.ID);
+                    
                     favorito = (negocio.listar(idArti)[0]);
 
-                    negocioFavs.agregarFavorito(usuario.ID, favorito.ID);
-                    ListaFavoritos = negocioFavs.listarFavoritos(usuario.ID);
-
-                    Session.Add("listaFavoritos", ListaFavoritos);
+                    if(!esFavorito(ListaFavoritos, favorito.ID))
+                    {
+                        negocioFavs.agregarFavorito(usuario.ID, favorito.ID);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex);
+            }
+        }
+
+        private bool esFavorito(List<Articulo> lista, int idArticulo)
+        {
+            try
+            {
+                foreach(Articulo arti in lista)
+                {
+                    if (arti.ID == idArticulo)
+                        return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw ex;
             }
         }
     }

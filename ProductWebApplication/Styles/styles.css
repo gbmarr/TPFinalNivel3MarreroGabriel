@@ -142,7 +142,7 @@ ul > li:hover {
     flex-direction: row;
     flex-flow: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 1em;
 }
 

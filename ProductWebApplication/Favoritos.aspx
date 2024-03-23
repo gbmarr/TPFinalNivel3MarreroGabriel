@@ -7,10 +7,10 @@
     <div class="main_container">
         <h2 class="page_titles">Articulos favoritos</h2>
         <asp:Label Text="Aquí encontrarás los articulos que has seleccionado como tus favoritos." runat="server" />
-        <%if (ListaFavorito != null)
-            { %>
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
+                <%if (ListaFavorito != null)
+                    { %>
                 <div class="cardlist_container">
                     <asp:Repeater ID="repeaterFav" runat="server">
                         <ItemTemplate>
@@ -28,14 +28,16 @@
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
+                <%}
+                    else
+                    { %>
+                <div class="error_container">
+                    <h3 class="error_text">La lista de favoritos se encuentra vacía</h3>
+                </div>
+                <%} %>
             </ContentTemplate>
         </asp:UpdatePanel>
-        <%}
-            else
-            { %>
-        <div class="error_container">
-            <h3 class="modal_title">La lista de favoritos se encuentra vacía</h3>
-        </div>
-        <%} %>
     </div>
+    <!-- CAMBIO DE ESTILO DEL BOTON FAV -->
+
 </asp:Content>
