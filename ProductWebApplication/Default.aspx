@@ -15,7 +15,7 @@
                     <asp:Label Text="Criterio:" runat="server" />
                     <asp:DropDownList ID="ddlCriterioBusqueda" CssClass="busqueda_ddl" runat="server"></asp:DropDownList>
                     <asp:Label Text="Filtro:" runat="server" />
-                    <asp:TextBox ID="txtValorBusqueda" OnTextChanged="txtValorBusqueda_TextChanged" AutoPostBack="true" CssClass="busqueda_txt" runat="server" />
+                    <asp:TextBox ID="txtValorBusqueda" OnTextChanged="txtValorBusqueda_TextChanged" AutoPostBack="true" Enabled="false" CssClass="busqueda_txt" runat="server" />
                     <asp:Button ID="btnBusqueda" OnClick="btnBusqueda_Click" Enabled="false" CssClass="btn_desactivado" Text="Buscar" runat="server" />
                     <asp:Button ID="btnResetBusqueda" OnClick="btnResetBusqueda_Click" CssClass="btn_cancelar" Text="Resetear" runat="server" />
                 </div>

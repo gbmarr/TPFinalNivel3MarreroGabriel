@@ -12,6 +12,7 @@ namespace ProductWebApplication
     public partial class Default : System.Web.UI.Page
     {
         public List<Articulo> ListaArticulo { get; set; }
+        public List<Articulo> ListaFavoritos { get; set; }
         private ArticuloNegocio negocio;
         public string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
 
@@ -29,8 +30,6 @@ namespace ProductWebApplication
 
             cargarDesplegables();
         }
-
-        
 
         public string cargarCardImg(string imagen)
         {
@@ -87,6 +86,7 @@ namespace ProductWebApplication
                     ddlCriterioBusqueda.Items.Add("Igual");
                     ddlCriterioBusqueda.Items.Add("Mayor a");
                 }
+                txtValorBusqueda.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -103,7 +103,7 @@ namespace ProductWebApplication
                 string criterio = ddlCriterioBusqueda.SelectedValue;
                 string filtro = txtValorBusqueda.Text;
 
-                if(!string.IsNullOrEmpty(campo) || !string.IsNullOrEmpty(criterio) || !string.IsNullOrEmpty(filtro))
+                if (!string.IsNullOrEmpty(campo) || !string.IsNullOrEmpty(criterio) || !string.IsNullOrEmpty(filtro))
                 {
                     btnBusqueda.Enabled = true;
                     btnBusqueda.CssClass = "btn_agregar";
@@ -128,12 +128,15 @@ namespace ProductWebApplication
                 string campo = ddlCampoBusqueda.SelectedValue;
                 string criterio = ddlCriterioBusqueda.SelectedValue;
                 string filtro = txtValorBusqueda.Text;
+
                 if (!string.IsNullOrEmpty(campo) || !string.IsNullOrEmpty(criterio) || string.IsNullOrEmpty(filtro))
                 {
                     negocio = new ArticuloNegocio();
                     ListaArticulo = negocio.filtrar(campo, criterio, filtro);
+
                     repeaterArti.DataSource = ListaArticulo;
                     repeaterArti.DataBind();
+
                     Session.Add("listaArticulos", ListaArticulo);
                 }
             }
@@ -151,11 +154,15 @@ namespace ProductWebApplication
                 negocio = new ArticuloNegocio();
                 ListaArticulo = negocio.listarConSP();
                 ddlCriterioBusqueda.Items.Clear();
+
                 repeaterArti.DataSource = ListaArticulo;
                 repeaterArti.DataBind();
-                cargarDesplegables();
-                txtValorBusqueda.Text = "";
+                Session.Add("listaArticulos", ListaArticulo);
+
+                txtValorBusqueda.Enabled = false;
                 btnBusqueda.Enabled = false;
+
+                cargarDesplegables();
             }
             catch (Exception ex)
             {
@@ -166,7 +173,29 @@ namespace ProductWebApplication
 
         protected void cardFavorito_Click(object sender, EventArgs e)
         {
+            FavoritoNegocio negocioFavs = new FavoritoNegocio();
+            negocio = new ArticuloNegocio();
+            Articulo favorito = new Articulo();
+            try
+            {
+                User usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
 
+                if (usuario != null)
+                {
+                    string idArti = ((Button)sender).CommandArgument;
+                    //favorito = (Articulo)ListaArticulo[idArti];
+                    favorito = (negocio.listar(idArti)[0]);
+
+                    negocioFavs.agregarFavorito(usuario.ID, favorito.ID);
+                    ListaFavoritos = negocioFavs.listarFavoritos(usuario.ID);
+
+                    Session.Add("listaFavoritos", ListaFavoritos);
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
     }
 }

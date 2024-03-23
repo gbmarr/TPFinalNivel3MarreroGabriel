@@ -12,11 +12,18 @@ namespace ProductWebApplication
     public partial class Favoritos : System.Web.UI.Page
     {
         public List<Articulo> ListaFavorito { get; set; }
-        private ArticuloNegocio negocio;
+        FavoritoNegocio negocio = new FavoritoNegocio();
         public string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            int idUser = ((User)Session["usuario"]).ID;
+
+            if (string.IsNullOrEmpty(idUser.ToString()))
+            {
+                ListaFavorito = negocio.listarFavoritos(idUser);
+                repeaterFav.DataSource = ListaFavorito;
+                repeaterFav.DataBind();
+            }
         }
 
         public string cargarCardImg(string imagen)
@@ -34,6 +41,11 @@ namespace ProductWebApplication
                 Response.Redirect("Error.aspx", false);
                 throw ex;
             }
+        }
+
+        protected void btnEliminarFavorito_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
