@@ -174,7 +174,7 @@ namespace ProductWebApplication
         {
             FavoritoNegocio negocioFavs = new FavoritoNegocio();
             negocio = new ArticuloNegocio();
-            Articulo favorito = new Articulo();
+            Articulo favorito;
             try
             {
                 User usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
