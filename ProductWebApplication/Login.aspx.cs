@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 using dominio;
 using negocio;
 
@@ -22,7 +23,14 @@ namespace ProductWebApplication
             try
             {
                 if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(pass) && !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(pass))
-                    return true;
+                {
+                    string emailValido = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+                    Regex regularExpression = new Regex(emailValido);
+                    if (regularExpression.IsMatch(email))
+                        return true;
+                    else
+                        return false;
+                }
                 return false;
             }
             catch (Exception ex)
