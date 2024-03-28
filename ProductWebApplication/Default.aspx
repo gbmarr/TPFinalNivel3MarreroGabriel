@@ -32,9 +32,7 @@
                                         <a href="/Detalle.aspx?id=<%#Eval("ID") %>" class="btn_detalle">Ver Detalle</a>
                                         <%if (Session["usuario"] != null)
                                             { %>
-                                        <asp:Button ID="cardFavorito" OnClick="cardFavorito_Click" CommandArgument='<%#Eval("ID") %>' CommandName="artiID" CssClass="card_btnFav" Text="Fav" runat="server" />
-                                        <!-- MODAL -->
-                                        <script src="Scripts/modalDefault.js"></script>
+                                        <asp:Button ID="cardFavorito" ClientIDMode="Static" OnClick="cardFavorito_Click" CommandArgument='<%#Eval("ID") %>' CommandName="artiID" CssClass="card_btnFav" Text="Fav" runat="server" />
                                         <%} %>
                                     </div>
                                 </div>
@@ -43,7 +41,7 @@
                     </asp:Repeater>
                 </div>
                 <% if (noEsFavorito)
-                { %>
+                    { %>
                 <div class="modal_container">
                     <h3 class="modal_title">El artículo seleccionado ya forma parte de los favoritos.</h3>
                     <asp:Button ID="btnEntendido" OnClick="btnEntendido_Click" CssClass="modal_btn btn_agregar" Text="Entendido" runat="server" />
@@ -52,4 +50,6 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
+    <!-- MODAL -->
+    <script src="Scripts/modalDefault.js"></script>
 </asp:Content>
