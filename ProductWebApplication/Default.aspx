@@ -10,14 +10,22 @@
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
                 <div class="container_busqueda">
-                    <asp:Label Text="Campo:" runat="server" />
-                    <asp:DropDownList ID="ddlCampoBusqueda" OnSelectedIndexChanged="ddlCampoBusqueda_SelectedIndexChanged" AutoPostBack="true" CssClass="busqueda_ddl" runat="server"></asp:DropDownList>
-                    <asp:Label Text="Criterio:" runat="server" />
-                    <asp:DropDownList ID="ddlCriterioBusqueda" CssClass="busqueda_ddl" runat="server"></asp:DropDownList>
-                    <asp:Label Text="Filtro:" runat="server" />
-                    <asp:TextBox ID="txtValorBusqueda" OnTextChanged="txtValorBusqueda_TextChanged" AutoPostBack="true" Enabled="false" CssClass="busqueda_txt" runat="server" />
-                    <asp:Button ID="btnBusqueda" OnClick="btnBusqueda_Click" Enabled="false" CssClass="btn_desactivado" Text="Buscar" runat="server" />
-                    <asp:Button ID="btnResetBusqueda" OnClick="btnResetBusqueda_Click" CssClass="btn_cancelar" Text="Resetear" runat="server" />
+                    <div>
+                        <asp:Label Text="Campo:" runat="server" />
+                        <asp:DropDownList ID="ddlCampoBusqueda" OnSelectedIndexChanged="ddlCampoBusqueda_SelectedIndexChanged" AutoPostBack="true" CssClass="busqueda_ddl" runat="server"></asp:DropDownList>
+                    </div>
+                    <div>
+                        <asp:Label Text="Criterio:" runat="server" />
+                        <asp:DropDownList ID="ddlCriterioBusqueda" CssClass="busqueda_ddl" runat="server"></asp:DropDownList>
+                    </div>
+                    <div>
+                        <asp:Label Text="Filtro:" runat="server" />
+                        <asp:TextBox ID="txtValorBusqueda" OnTextChanged="txtValorBusqueda_TextChanged" AutoPostBack="true" Enabled="false" CssClass="busqueda_txt" runat="server" />
+                    </div>
+                    <div>
+                        <asp:Button ID="btnBusqueda" OnClick="btnBusqueda_Click" Enabled="false" CssClass="btn_desactivado" Text="Buscar" runat="server" />
+                        <asp:Button ID="btnResetBusqueda" OnClick="btnResetBusqueda_Click" CssClass="btn_cancelar" Text="Resetear" runat="server" />
+                    </div>
                 </div>
                 <div class="cardlist_container">
                     <asp:Repeater ID="repeaterArti" runat="server">

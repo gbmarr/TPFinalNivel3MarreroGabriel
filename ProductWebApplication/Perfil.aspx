@@ -23,7 +23,7 @@
                     <asp:Label CssClass="profile_txt" ID="lblApellido" runat="server" />
                 </div>
                 <div class="profile_div">
-                    <asp:CheckBox CssClass="profile_txt" ID="ckbAdmin" Text="Admin" runat="server" />
+                    <asp:CheckBox CssClass="profile_txt" ID="ckbAdmin" Text="Admin" Enabled="false" runat="server" />
                 </div>
             </div>
             <div class="profile_divimg">
