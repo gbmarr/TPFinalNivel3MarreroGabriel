@@ -46,10 +46,10 @@
                     <h3 class="modal_title">El artículo seleccionado ya forma parte de los favoritos.</h3>
                     <asp:Button ID="btnEntendido" OnClick="btnEntendido_Click" CssClass="modal_btn btn_agregar" Text="Entendido" runat="server" />
                 </div>
+                <!-- MODAL -->
+                <script src="Scripts/modalDefault.js"></script>
                 <%} %>
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-    <!-- MODAL -->
-    <script src="Scripts/modalDefault.js"></script>
 </asp:Content>
