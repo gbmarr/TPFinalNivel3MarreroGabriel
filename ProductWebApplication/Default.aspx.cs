@@ -13,6 +13,7 @@ namespace ProductWebApplication
     {
         public List<Articulo> ListaArticulo { get; set; }
         public List<Articulo> ListaFavoritos { get; set; }
+        public bool noEsFavorito { get; set; }
         private ArticuloNegocio negocio;
         public string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
 
@@ -189,6 +190,11 @@ namespace ProductWebApplication
                     if(!esFavorito(ListaFavoritos, favorito.ID))
                     {
                         negocioFavs.agregarFavorito(usuario.ID, favorito.ID);
+                        noEsFavorito = false;
+                    }
+                    else
+                    {
+                        noEsFavorito = true;
                     }
                 }
             }
@@ -214,6 +220,11 @@ namespace ProductWebApplication
                 Session.Add("error", ex);
                 throw ex;
             }
+        }
+
+        protected void btnEntendido_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx", false);
         }
     }
 }
