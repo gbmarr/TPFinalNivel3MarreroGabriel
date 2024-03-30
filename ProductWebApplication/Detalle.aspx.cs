@@ -11,6 +11,7 @@ namespace ProductWebApplication
 {
     public partial class Detalle : System.Web.UI.Page
     {
+        public string imgDefecto = "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -33,9 +34,26 @@ namespace ProductWebApplication
                 txtMarca.Text = seleccionado.Marca.Descripcion;
                 txtCat.Text = seleccionado.Categoria.Descripcion;
                 txtPrecio.Text = "$" + seleccionado.Precio.ToString();
-                imgUrl.ImageUrl = seleccionado.Imagen;
+                imgUrl.ImageUrl = cargarCardImg(seleccionado.Imagen);
             }
             
+        }
+
+        public string cargarCardImg(string imagen)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(imagen) && !string.IsNullOrWhiteSpace(imagen))
+                    return imagen;
+                else
+                    return imgDefecto;
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx", false);
+                throw ex;
+            }
         }
     }
 }

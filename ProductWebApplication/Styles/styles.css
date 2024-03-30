@@ -113,15 +113,16 @@ ul > li:hover {
 .container_busqueda {
     margin: auto;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     padding: 1em;
-    width: 60%;
-    justify-content: space-evenly;
+    width: 90%;
+    justify-content: space-around;
     align-items: center;
 }
 
 .busqueda_ddl, .busqueda_txt {
-    width: 150px;
+    width: 180px;
     margin: auto .5em;
     border-radius: 2px;
     padding: .3em;
@@ -143,11 +144,12 @@ ul > li:hover {
 }
 
 .cardlist_container {
+    margin: auto;
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     padding: 1em;
 }
 
@@ -620,4 +622,24 @@ ul > li:hover {
     font-weight: 500;
     background-color: transparent;
     color: var(--eerie-black);
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 780px) {
+    * {
+        font-size: 16px;
+    }
+
+    .cardlist_container {
+    }
+}
+
+@media (max-width: 480px) {
+        * {
+            font-size: 18px;
+        }
+
+        .cardlist_container {
+            flex-direction: column;
+        }
 }

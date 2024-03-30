@@ -13,7 +13,7 @@ namespace ProductWebApplication
     {
         public User usuario;
         public bool Administrador;
-        private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
+        public string imgDefecto = "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -30,7 +30,7 @@ namespace ProductWebApplication
                 usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
                 if (usuario != null)
                 {
-                    if (!string.IsNullOrEmpty(usuario.UrlImagen))
+                    if (!string.IsNullOrEmpty(usuario.UrlImagen) && !string.IsNullOrWhiteSpace(usuario.UrlImagen))
                         imgPerfilLogueado.ImageUrl = usuario.UrlImagen;
                     else
                         imgPerfilLogueado.ImageUrl = imgDefecto;

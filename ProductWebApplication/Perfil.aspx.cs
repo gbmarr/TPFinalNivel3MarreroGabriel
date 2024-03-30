@@ -13,7 +13,7 @@ namespace ProductWebApplication
     {
         public bool isEdit { get; set; }
         public User Usuario { get; set; }
-        private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
+        public string imgDefecto = "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081";
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario = Session["usuario"] != null ? (User)Session["usuario"] : null;
@@ -34,7 +34,7 @@ namespace ProductWebApplication
                         txtPerfilApellido.Text = Usuario.Apellido;
                         ckdAdmin.Checked = Usuario.TipoUsuario;
                         txtPerfilImagen.Text = Usuario.UrlImagen;
-                        imgPerfilUsuarioEdit.ImageUrl = Usuario.UrlImagen;
+                        imgPerfilUsuarioEdit.ImageUrl = cargarImagen(Usuario.UrlImagen);
                     }
                 }
                 else

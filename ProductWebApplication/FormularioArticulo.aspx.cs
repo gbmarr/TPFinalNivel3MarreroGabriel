@@ -13,7 +13,7 @@ namespace ProductWebApplication
     public partial class FormularioArticulo : System.Web.UI.Page
     {
         public bool confirmaEliminacion;
-        private string imgDefecto = "https://editorial.unc.edu.ar/wp-content/uploads/sites/33/2022/09/placeholder.png";
+        public string imgDefecto = "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081";
         private ArticuloNegocio negocio;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace ProductWebApplication
         {
             try
             {
-                if (imagen != null || imagen != "")
+                if (!string.IsNullOrWhiteSpace(imagen) && !string.IsNullOrEmpty(imagen))
                     return imagen;
                 else
                     return imagen = imgDefecto;
