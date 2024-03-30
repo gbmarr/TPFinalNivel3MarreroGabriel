@@ -38,7 +38,7 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     flex-direction: row;
     background-color: var(--eerie-black);
 }
@@ -54,10 +54,10 @@
     flex-direction: row;
 }
 
-.navbar_items a {
-    margin: 1em;
-    font: 2em "Bebas Neue", sans-serif;
-}
+    .navbar_items a {
+        margin: 1em;
+        font: 2em "Bebas Neue", sans-serif;
+    }
 
 .navbar_login {
     margin: 1em;
@@ -75,11 +75,11 @@
     color: var(--caribbean-current);
 }
 
-.btn_navregistro:hover, .btn_navlogin:hover {
-    transform: scale(1.3);
-    margin: 0 1.1em;
-    transition: all 1s ease-in-out;
-}
+    .btn_navregistro:hover, .btn_navlogin:hover {
+        transform: scale(1.3);
+        margin: 0 1.1em;
+        transition: all 1s ease-in-out;
+    }
 
 ul > li:hover {
     text-shadow: 2px 2px 10px var(--mint);
@@ -95,12 +95,12 @@ ul > li:hover {
     border-radius: 2px;
 }
 
-.btn_navdeslogin:hover {
-    cursor: pointer;
-    background-color: var(--eerie-black);
-    color: var(--folly);
-    transition: all 1s ease;
-}
+    .btn_navdeslogin:hover {
+        cursor: pointer;
+        background-color: var(--eerie-black);
+        color: var(--folly);
+        transition: all 1s ease;
+    }
 
 .navbar_imgperfil {
     width: 50px;
@@ -173,6 +173,7 @@ ul > li:hover {
 
 .card_body {
     margin: 1em;
+    padding: .5em;
 }
 
 .card_cod {
@@ -186,6 +187,7 @@ ul > li:hover {
 }
 
 .card_precio {
+    margin: .5em;
     padding: .5em;
     font-size: 1.1em;
     color: var(--mint);
@@ -199,13 +201,13 @@ ul > li:hover {
     color: var(--white);
 }
 
-.btn_detalle:hover {
-    cursor: pointer;
-    color: var(--mint);
-    background-color: transparent;
-    border: 1px solid var(--mint);
-    transition: all 1s ease;
-}
+    .btn_detalle:hover {
+        cursor: pointer;
+        color: var(--mint);
+        background-color: transparent;
+        border: 1px solid var(--mint);
+        transition: all 1s ease;
+    }
 
 .card_btnFav {
     background-color: transparent;
@@ -275,12 +277,12 @@ ul > li:hover {
     margin: auto 1em;
 }
 
-.tbl_button:hover, .btn_agregar:hover {
-    cursor: pointer;
-    background-color: var(--white);
-    color: var(--eerie-black);
-    transition: all 1s ease;
-}
+    .tbl_button:hover, .btn_agregar:hover {
+        cursor: pointer;
+        background-color: var(--white);
+        color: var(--eerie-black);
+        transition: all 1s ease;
+    }
 
 /* ---------------------------------------------------------- */
 /* ESTILOS DE LA PAGINA LOGIN */
@@ -317,12 +319,12 @@ ul > li:hover {
     padding: .3em;
 }
 
-.btn_login:hover {
-    cursor: pointer;
-    background-color: var(--white);
-    color: var(--caribbean-current);
-    transition: all 1s ease;
-}
+    .btn_login:hover {
+        cursor: pointer;
+        background-color: var(--white);
+        color: var(--caribbean-current);
+        transition: all 1s ease;
+    }
 
 .txt_login:focus {
     border: none;
@@ -352,10 +354,10 @@ ul > li:hover {
     flex-direction: column;
 }
 
-.article_bodycontainer > div {
-    margin: 1em;
-    padding: .5em;
-}
+    .article_bodycontainer > div {
+        margin: 1em;
+        padding: .5em;
+    }
 
 .article_cod {
     font-weight: 500;
@@ -400,12 +402,12 @@ ul > li:hover {
     border-radius: 2px;
 }
 
-.btn_volver:hover {
-    background-color: var(--eerie-black);
-    border: 1px solid var(--folly);
-    color: var(--folly);
-    transition: all 1s ease;
-}
+    .btn_volver:hover {
+        background-color: var(--eerie-black);
+        border: 1px solid var(--folly);
+        color: var(--folly);
+        transition: all 1s ease;
+    }
 
 /* ---------------------------------------------------------- */
 /* ESTILOS DE LA PAGINA FORMULARIOARTICULO */
@@ -512,12 +514,12 @@ ul > li:hover {
     margin: .5em auto;
 }
 
-.btn_cancelar:hover {
-    cursor: pointer;
-    background-color: var(--eerie-black);
-    color: var(--white);
-    transition: all 1s ease;
-}
+    .btn_cancelar:hover {
+        cursor: pointer;
+        background-color: var(--eerie-black);
+        color: var(--white);
+        transition: all 1s ease;
+    }
 
 .modal_container {
     position: absolute;
@@ -594,13 +596,13 @@ ul > li:hover {
     border-radius: 2px;
 }
 
-.profile_btnEditar:hover {
-    cursor: pointer;
-    color: var(--folly);
-    background-color: transparent;
-    border: 1px solid var(--folly);
-    transition: all 1s ease;
-}
+    .profile_btnEditar:hover {
+        cursor: pointer;
+        color: var(--folly);
+        background-color: transparent;
+        border: 1px solid var(--folly);
+        transition: all 1s ease;
+    }
 
 /* ---------------------------------------------------------- */
 /* ESTILOS DE LA PAGINA ERROR */
@@ -617,7 +619,8 @@ ul > li:hover {
 
 .error_text {
     padding: 1em;
-    margin; 1em;
+    margin;
+    1em;
     text-align: center;
     font-weight: 500;
     background-color: transparent;
@@ -625,21 +628,14 @@ ul > li:hover {
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 780px) {
+@media (max-width: 1250px) {
     * {
         font-size: 16px;
     }
-
-    .cardlist_container {
-    }
 }
 
-@media (max-width: 480px) {
-        * {
-            font-size: 18px;
-        }
-
-        .cardlist_container {
-            flex-direction: column;
-        }
+@media (max-width: 1250px) {
+    * {
+        font-size: 18px;
+    }
 }
