@@ -34,17 +34,17 @@ namespace ProductWebApplication
         {
             try
             {
-                negocio = new ArticuloNegocio();
+                ElementoNegocio elementos = new ElementoNegocio();
                 if (!IsPostBack)
                 {
                     ddlMarca.Items.Clear();
-                    ddlMarca.DataSource = negocio.listarConSP();
-                    ddlMarca.DataTextField = "Marca";
+                    ddlMarca.DataSource = elementos.listar("MARCAS");
+                    ddlMarca.DataTextField = "Descripcion";
                     ddlMarca.DataValueField = "ID";
                     ddlMarca.DataBind();
                     ddlCat.Items.Clear();
-                    ddlCat.DataSource = negocio.listarConSP();
-                    ddlCat.DataTextField = "Categoria";
+                    ddlCat.DataSource = elementos.listar("CATEGORIAS");
+                    ddlCat.DataTextField = "Descripcion";
                     ddlCat.DataValueField = "ID";
                     ddlCat.DataBind();
                 }
