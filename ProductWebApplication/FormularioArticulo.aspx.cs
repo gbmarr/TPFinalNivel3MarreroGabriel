@@ -37,10 +37,12 @@ namespace ProductWebApplication
                 negocio = new ArticuloNegocio();
                 if (!IsPostBack)
                 {
+                    ddlMarca.Items.Clear();
                     ddlMarca.DataSource = negocio.listarConSP();
                     ddlMarca.DataTextField = "Marca";
                     ddlMarca.DataValueField = "ID";
                     ddlMarca.DataBind();
+                    ddlCat.Items.Clear();
                     ddlCat.DataSource = negocio.listarConSP();
                     ddlCat.DataTextField = "Categoria";
                     ddlCat.DataValueField = "ID";
