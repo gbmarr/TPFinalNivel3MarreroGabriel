@@ -159,6 +159,7 @@ namespace ProductWebApplication
                 repeaterArti.DataBind();
                 Session.Add("listaArticulos", ListaArticulo);
 
+                txtValorBusqueda.Text = "";
                 txtValorBusqueda.Enabled = false;
                 btnBusqueda.Enabled = false;
 
