@@ -53,12 +53,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="script\agregarConSP.sql" />
-    <Content Include="script\agregarNuevoUsuario.sql" />
     <Content Include="script\CATALOGO_WEB_DB.sql" />
-    <Content Include="script\editarPerfil.sql" />
-    <Content Include="script\spListar.sql" />
-    <Content Include="script\spModificar.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
