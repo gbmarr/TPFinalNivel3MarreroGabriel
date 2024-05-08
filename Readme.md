@@ -24,4 +24,7 @@ La aplicación muestra el stock de productos disponibles, cada uno con datos ind
 Los usuarios con rol de administrador tienen acceso adicional para:
 
 - Gestión de Productos: Agregar, modificar o eliminar productos de la base de datos.
-- 
+
+# Funcionalidades Adicionales
+
+- Búsqueda Avanzada: Se pueden realizar búsquedas de artículos por distintos criterios, lo que permite a los usuarios encontrar rápidamente los productos que necesitan.
