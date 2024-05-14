@@ -27,7 +27,7 @@
                                 <li><a href="Favoritos.aspx">Favoritos</a></li>
                                 <li><a href="Perfil.aspx">Perfil</a></li>
                                 <%if (Administrador)
-                                    { %><li><a href="ListadoArticulos.aspx">Listado de Articulos</a></li>
+                                    { %><li><a href="ListadoArticulos.aspx">Listado</a></li>
                                 <%} %>
                         <%} %>
                     </ul>

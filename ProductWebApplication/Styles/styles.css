@@ -19,7 +19,7 @@
     box-sizing: border-box;
     height: fit-content;
     background-color: var(--eerie-black);
-    font: 14px "Montserrat", sans-serif;
+    font: 16px "Montserrat", sans-serif;
     color: var(--white);
     text-decoration: none;
     list-style: none;
@@ -117,13 +117,14 @@ ul > li:hover {
     flex-wrap: wrap;
     padding: 1em;
     width: 90%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .busqueda_ddl, .busqueda_txt {
-    width: 180px;
-    margin: auto .5em;
+    min-width: 200px;
+    width: 25%;
+    margin: .5em;
     border-radius: 2px;
     padding: .3em;
     font-weight: 500;
@@ -144,17 +145,17 @@ ul > li:hover {
 }
 
 .cardlist_container {
-    margin: auto;
+    margin: 1em;
     display: flex;
     flex-direction: row;
-    flex-flow: wrap;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: baseline;
     justify-content: center;
     padding: 1em;
 }
 
 .card_container {
-    width: 250px;
+    width: 25%;
     margin: 1em;
     align-items: center;
     justify-content: center;
@@ -183,7 +184,7 @@ ul > li:hover {
 
 .card_title {
     font-size: 1.2em;
-    padding: .5em;
+    margin: .5em;
 }
 
 .card_precio {
@@ -341,7 +342,7 @@ ul > li:hover {
     flex-direction: row;
     margin: 1em auto;
     padding: 1em;
-    width: 60%;
+    width: 80%;
     border: 1px solid var(--mint);
     border-radius: 10px;
 }
@@ -413,7 +414,7 @@ ul > li:hover {
 /* ESTILOS DE LA PAGINA FORMULARIOARTICULO */
 
 .form_container {
-    width: 70%;
+    width: 90%;
     margin: auto;
     padding: 1em;
     display: flex;
@@ -424,6 +425,7 @@ ul > li:hover {
 }
 
 .form_containerrow {
+    width: 70%;
     padding: .5em;
     margin: auto 1em;
     align-content: center;
@@ -431,7 +433,7 @@ ul > li:hover {
 
 .form_div {
     width: 70%;
-    margin: auto 1.5em;
+    margin: 1.5em auto;
 }
 
 .form_txt {
@@ -553,7 +555,7 @@ ul > li:hover {
     border-radius: 10px;
     margin: auto;
     padding: 1em;
-    width: 60%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -619,8 +621,7 @@ ul > li:hover {
 
 .error_text {
     padding: 1em;
-    margin;
-    1em;
+    margin: 1em;
     text-align: center;
     font-weight: 500;
     background-color: transparent;
@@ -628,14 +629,62 @@ ul > li:hover {
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 1250px) {
-    * {
-        font-size: 16px;
+@media (max-width: 1400px) {
+    .card_container {
+        width: 35%;
     }
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1200px) {
+    .card_container {
+        width: 40%;
+    }
+
+    .form_container {
+        flex-direction: column;
+    }
+
+    .form_div {
+        margin: 1em;
+        width: 90%;
+    }
+
+    .form_img {
+        width: 50%;
+    }
+}
+
+@media (max-width: 800px) {
     * {
-        font-size: 18px;
+        font: 18px "Montserrat", sans-serif;
+    }
+
+    .container_busqueda {
+        width: 50%;
+        flex-direction: column;
+    }
+
+    .card_container {
+        width: 60%;
+    }
+}
+
+@media (max-width: 650px) {
+    * {
+        font: 20px "Montserrat", sans-serif;
+    }
+}
+
+@media (max-width: 450px) {
+    * {
+        font: 20px "Montserrat", sans-serif;
+    }
+
+    .cardlist_container {
+        flex-direction: column;
+    }
+
+    .card_container {
+        width: 80%;
     }
 }
